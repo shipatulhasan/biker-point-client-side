@@ -1,9 +1,12 @@
+import React from 'react'
+import { RouterProvider } from 'react-router-dom'
+import router from './routes/Routes';
+
 function App() {
+
   return (
     <>
-     <h2 className='text-center text-4xl font-bold'>
-       Welcome to <span className='text-red-200'>biker</span> point
-     </h2>
+    <RouterProvider router={router} />
     </>
   );
 }
