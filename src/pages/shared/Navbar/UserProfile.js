@@ -3,21 +3,22 @@ import toast from "react-hot-toast";
 import { FaRegUser, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
-// import { AuthContext } from "../../../../AuthProvider/AuthProvider";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const UserProfile = () => {
   
   const [isClicked, setIsClicked] = useState(false);
-  // const {user, logOutUser} = useContext(AuthContext)
+  const {user,logOut,isLoading} = useContext(AuthContext)
 
 
-  // const handleLogOut = ()=>{
-  //   logOutUser()
-  //   .then(()=>{ 
-  //     toast.success('Successfully logout')
-  //   })
-  //   .catch(err=>console.error(err))
-  // }
+  const handleLogOut = ()=>{
+    logOut()
+    .then(()=>{ 
+      toast.success('Successfully logout')
+    })
+    .catch(err=>console.error(err.message))
+  }
+
 
   return (
     <div className="relative ">
@@ -26,12 +27,10 @@ const UserProfile = () => {
       onClick={() => setIsClicked(!isClicked)}
       className="flex items-center focus:outline-none"
       >
-         <div className="w-12 h-12 overflow-hidden border-2 ring-[#800080] ring-2 m-1 rounded-full flex items-center justify-center">
-           
-              <img src='{user?.photoURL}' className="object-cover w-full h-full" alt="avatar" />
-                  
-                  <FaUser className="text-white text-xl"/>
-
+         <div className="w-12 h-12 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center">
+           {
+             isLoading ? <FaUser className="text-white text-xl"/>:<img src={user?.photoURL} className="object-cover w-full h-full" alt="avatar" />
+           }
            
           </div>
       </button>
@@ -46,16 +45,16 @@ const UserProfile = () => {
             className="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <img
-              className="flex-shrink-0 ring-2 border-2 ring-fuchsia-900 object-cover mx-1 rounded-full w-9 h-9"
-              src='{user?.photoURL}'
+              className="flex-shrink-0 ring-2 border-2 ring-red-600 object-cover mx-1 rounded-full w-9 h-9"
+              src={user?.photoURL}
               alt="img"
             />
             <div className="ml-2">
               <h1 className="text-sm font-semibold text-gray-700 dark:text-gray-200">
-                Shakib
+                {user?.displayName}
               </h1>
               <p className="text-xs text-gray-500 dark:text-gray-400 leading-none">
-               shakib@gmail.com
+               {user?.email}
               </p>
             </div>
           </Link>
@@ -96,7 +95,7 @@ const UserProfile = () => {
 
           <hr className="border-gray-200 dark:border-gray-700 " />
 
-          <p 
+          <p onClick={handleLogOut}
             className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 hover:cursor-pointer transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <svg

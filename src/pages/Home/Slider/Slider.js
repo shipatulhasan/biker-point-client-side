@@ -41,7 +41,7 @@ const Slider = () => {
                             <img className='w-12 md:w-20' src={slide.brand} alt="" />
                         </div>
                         <h2 className='text-5xl md:text-8xl lg:text-9xl font-bold uppercase'>
-                        <span className='text-red-600 '>Byker</span>point
+                        <span className='text-red-600 '>Biker</span>point
                         </h2>
                     </div>
                 </SwiperSlide>)
