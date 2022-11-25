@@ -4,6 +4,7 @@ import Main from "../layouts/Main";
 import Login from "../pages/Forms/Login";
 import Registration from "../pages/Forms/Registration";
 import Home from "../pages/Home/Home";
+import SingleProduct from "../pages/SingleProduct/SingleProduct";
 import PrivateRoute from '../routes/PrivateRoute'
 
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path:'/home',
                 element:<Home />
+            },
+            {
+                path:'/single-product',
+                element:<SingleProduct />
             },
            
         ]

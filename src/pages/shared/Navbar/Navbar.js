@@ -40,7 +40,7 @@ const Navbar = () => {
   );
 
   if(isLoading){
-    return <Loader/>
+    return <Loader height={'h-10'}/>
   }
 
   return (
