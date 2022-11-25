@@ -3,8 +3,6 @@ import React from 'react';
 const ProductsCard = () => {
     return (
         <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-xl shadow-slate-300 p-5">
-       
-         
             <div>
             <img
               className="object-cover w-full h-56 rounded shadow-lg sm:h-96"

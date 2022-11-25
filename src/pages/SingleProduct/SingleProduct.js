@@ -9,7 +9,6 @@ import { NavLink } from 'react-router-dom';
 const SingleProduct = () => {
 
     const [categories,catLoading] = useCategories()
-    const [catName,setCatName] = useState('')
 
     return (
 

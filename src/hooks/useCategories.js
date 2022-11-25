@@ -11,6 +11,8 @@ export const useCategories = ()=>{
             setCategories(data)
             setCatLoading(false)
         })
+       
+
     },[])
 
     return [categories,catLoading]
