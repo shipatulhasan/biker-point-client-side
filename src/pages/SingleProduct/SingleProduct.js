@@ -3,12 +3,18 @@ import PageHeader from '../../components/PageHeader';
 import ProductsCard from './ProductsCard';
 import {useCategories} from '../../hooks/useCategories'
 import img from '../../assets/banner/motorcycle.jpg'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLoaderData, useNavigation } from 'react-router-dom';
+import Loader from '../../components/Spinner/Loader';
 
 
 const SingleProduct = () => {
 
     const [categories,catLoading] = useCategories()
+    const products = useLoaderData()
+    const navigation = useNavigation()
+    if(navigation.state === "loading" || catLoading){
+      return <Loader height={'min-h-[60vh]'} />
+    }
 
     return (
 
@@ -21,11 +27,11 @@ const SingleProduct = () => {
                     Other Categories
                 </h2>
                         {
-                            categories.map((cat,i)=><NavLink key={cat._id} to="/category/_id">
+                            categories.map((cat,i)=><NavLink key={cat._id} to ={`/category/${cat._id}`}>
                             {({ isActive }) => (
                               <li
                                 className={`${
-                                  isActive ? "bg-red-500" : "text-black"
+                                  isActive ? "bg-red-500 text-white" : "text-black"
                                 } w-full hover:bg-red-500 text-lg hover:text-white py-4 transition-colors duration-150 ease-linear font-semibold list-none  px-5 ${i===categories.length-1 ? 'border-b-0' :'border-b border-red-500'} uppercase tracking-wide`}
                               >{cat?.name}
                                     
@@ -36,8 +42,11 @@ const SingleProduct = () => {
                         }
 
                     </div>
-                    <div className='md:col-span-4'>
-                    <ProductsCard />
+                    <div className='md:col-span-4 space-y-5 md:space-y-10'>
+                      {
+                        products.map(product=><ProductsCard key={product._id} product={product} />)
+                      }
+                    
                     </div>
 
         

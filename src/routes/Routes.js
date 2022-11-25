@@ -23,7 +23,8 @@ const router = createBrowserRouter([
                 element:<Home />
             },
             {
-                path:'/single-product',
+                path:'/category/:id',
+                loader:({params})=> fetch(`${process.env.REACT_APP_api}/product/${params.id}`),
                 element:<SingleProduct />
             },
            

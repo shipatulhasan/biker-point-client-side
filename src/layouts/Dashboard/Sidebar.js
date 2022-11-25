@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import useRole from '../../hooks/useRole';
 import Loader from '../../components/Spinner/Loader';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     const [show, setShow] = useState(false);
@@ -41,9 +42,9 @@ const Sidebar = () => {
         <>
               <div className="w-64 fixed bg-slate-50 shadow md:h-full flex-col justify-between hidden md:flex">
                 <div className="px-8 my-5">
-                    <div className="w-2/3 mx-auto">
+                    <Link to='/' className="w-2/3 mx-auto hover:cursor-pointer">
                        <img src={brand} alt="" />
-                    </div>
+                    </Link>
                     <div className='flex items-center gap-0 mt-2'>
 
                     <div className="w-12 h-12 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center">

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './category.css'
 
 const CategoryCard = ({category}) => {
-  const {img,name} = category
+  const {img,name,_id} = category
     return (
-        <div>
+        <Link to ={`/category/${_id}`}>
               <div className="relative overflow-hidden  rounded shadow border border-slate-200 box hover:cursor-pointer" >
             
                 <img className='rounded object-cover w-full h-80' src={img} alt="" />
@@ -16,7 +17,7 @@ const CategoryCard = ({category}) => {
          
       
         </div>
-        </div>
+        </Link>
     );
 };
 

@@ -1,26 +1,31 @@
 import React from 'react';
+import formatDistanceToNow from'date-fns/formatDistanceToNow'
 
-const ProductsCard = () => {
+const ProductsCard = ({product}) => {
+  const {image,title,originalprice,sellprice,condition,category,location,purchase_year,years_of_uses,description,post_date} = product
+
+  const post_time = formatDistanceToNow( new Date(post_date), [{addSuffix:true},{includeSeconds: true}])
     return (
-        <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-xl shadow-slate-300 p-5">
+        <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
             <div>
             <img
-              className="object-cover w-full h-56 rounded shadow-lg sm:h-96"
-              src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+              className="object-contain w-full h-56 rounded sm:h-96"
+              src={product?.image}
               alt=""
             />
           </div>
 
           {/*  */}
           <div className='space-y-5 md:space-y-10'>
+          <p className=" text-sm text-right"> posted {post_time}</p>
           <div className='space-y-4 md:space-y-0 md:flex justify-between'>
           <div className="space-y-1">
-                <h3 className="text-xl font-bold leading-snug sm:pr-8">Gixxer monotone 150</h3>
-                <p className="text-sm text-gray-600">Location: Chittagong, Bangladesh</p>
+                <h3 className="text-xl font-bold leading-snug sm:pr-8">{title}</h3>
+                <p className="text-sm text-gray-600">Location: {location}</p>
 				</div>
                 <div className="md:text-right">
-							<p className="text-lg font-semibold"> Resale Price: $59.99</p>
-							<p className="text-sm">Original price: $75.50</p>
+							<p className="text-lg font-semibold"> Resale Price: ${sellprice}</p>
+							<p className="text-sm">Original price: ${originalprice}</p>
 						</div>
           
             
@@ -31,19 +36,16 @@ const ProductsCard = () => {
                 Description
             </h2>
         <p className="my-3 text-sm text-gray-900">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae explicabo. Sed ut perspiciatis unde omnis iste natus error sit
-              voluptatem totam rem aperiam, eaque ipsa quae explicabo.
+              {description}
             </p>
             <div className='my-8'>
 
-            <buton
+            <button
            
             className="px-6 py-2 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
           >
             Book now
-          </buton>
+          </button>
             </div>
         </div>
           </div>
