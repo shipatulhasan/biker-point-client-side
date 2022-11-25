@@ -1,18 +1,22 @@
 import React from 'react';
-import formatDistanceToNow from'date-fns/formatDistanceToNow'
+import formatDistanceToNowStrict from'date-fns/formatDistanceToNowStrict'
+import Loader from '../../components/Spinner/Loader';
 
 const ProductsCard = ({product}) => {
   const {image,title,originalprice,sellprice,condition,category,location,purchase_year,years_of_uses,description,post_date} = product
 
-  const post_time = formatDistanceToNow( new Date(post_date), [{addSuffix:true},{includeSeconds: true}])
+
+  const post_time = formatDistanceToNowStrict( new Date(post_date), {addSuffix: true})
     return (
         <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
             <div>
-            <img
-              className="object-contain w-full h-56 rounded sm:h-96"
-              src={product?.image}
-              alt=""
-            />
+              <img
+                className="object-contain w-full h-56 rounded sm:h-96"
+                src={product?.image}
+                alt=""
+              />
+
+            
           </div>
 
           {/*  */}
@@ -36,7 +40,7 @@ const ProductsCard = ({product}) => {
                 Description
             </h2>
         <p className="my-3 text-sm text-gray-900">
-              {description}
+              {description?.length>250 ? description.slice(0,250) + '...' : description }
             </p>
             <div className='my-8'>
 

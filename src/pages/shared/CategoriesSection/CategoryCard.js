@@ -5,7 +5,7 @@ import './category.css'
 const CategoryCard = ({category}) => {
   const {img,name,_id} = category
     return (
-        <Link to ={`/category/${_id}`}>
+        <Link to ={`/category/${_id}`} state={category} >
               <div className="relative overflow-hidden  rounded shadow border border-slate-200 box hover:cursor-pointer" >
             
                 <img className='rounded object-cover w-full h-80' src={img} alt="" />
