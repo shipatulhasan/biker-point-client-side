@@ -26,7 +26,14 @@ const ProductsCard = ({product}) => {
 
           {/*  */}
           <div className='space-y-5 '>
+          <div className='flex justify-between'>
+          <p className=" text-sm">{seller?.verified ? 'This product is added by a verified seller' :'seller is not verified'}</p>
           <p className=" text-sm text-right"> posted {post_time}</p>
+          
+          
+          </div>
+          
+          
           <div>
 
           <div className='space-y-4 md:space-y-0 md:flex justify-between'>
@@ -57,7 +64,7 @@ const ProductsCard = ({product}) => {
               <p className=" font-bold">Seller information</p>
               <div
             
-            className="flex items-center py-3 text-sm text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="flex items-center py-3 text-sm text-gray-600 transition-colors duration-300 transform dark:text-gray-300 "
           >
             <img
               className="flex-shrink-0 ring-2 border-2 ring-red-600 object-cover mx-1 rounded-full w-12 h-12"

@@ -10,7 +10,7 @@ export const userMenu =
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-red-500" : "text-black"
+              isActive ? "bg-red-500 text-white" : "text-black"
             } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
           >
                   <div className="flex gap-2 items-center">
@@ -27,7 +27,7 @@ export const sellersMenu = <>
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-red-500" : "text-black"
+              isActive ? "bg-red-500 text-white" : "text-black"
             } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
           >
                   <div className="flex gap-2 items-center">
@@ -38,16 +38,16 @@ export const sellersMenu = <>
           </li>
         )}
       </NavLink>
-    <NavLink to="/dashboard/my-products">
+    <NavLink to="/dashboard/manage-products">
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-red-500" : "text-black"
+              isActive ? "bg-red-500 text-white" : "text-black"
             } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
           >
                   <div className="flex gap-2 items-center">
                   <AiOutlineShoppingCart className="" />
-                            <span className='' >My Products</span>
+                            <span className='' >Manage Products</span>
                         </div>
             
           </li>
@@ -57,7 +57,7 @@ export const sellersMenu = <>
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-red-500" : "text-black"
+              isActive ? "bg-red-500 text-white" : "text-black"
             } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
           >
                   <div className="flex gap-2 items-center">
@@ -75,7 +75,7 @@ export const adminMenu = <>
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-red-500" : "text-black"
+              isActive ? "bg-red-500 text-white" : "text-black"
             } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
           >
                   <div className="flex gap-2 items-center">
@@ -90,7 +90,7 @@ export const adminMenu = <>
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-red-500" : "text-black"
+              isActive ? "bg-red-500 text-white" : "text-black"
             } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
           >
                   <div className="flex gap-2 items-center">
@@ -105,7 +105,7 @@ export const adminMenu = <>
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-red-500" : "text-black"
+              isActive ? "bg-red-500 text-white" : "text-black"
             } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
           >
                   <div className="flex gap-2 items-center">

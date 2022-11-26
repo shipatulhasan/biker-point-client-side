@@ -40,8 +40,8 @@ const Sidebar = () => {
       }
     
     return (
-        <>
-              <div className="w-64 fixed bg-slate-50 shadow md:h-full flex-col justify-between hidden md:flex">
+        <div>
+              <div className="w-64 hidden bg-slate-50 shadow h-full md:flex  flex-col justify-between fixed">
                 <div className="px-8 my-5">
                     <Link to='/' className="w-2/3 mx-auto hover:cursor-pointer">
                        <img src={brand} alt="" />
@@ -110,7 +110,7 @@ const Sidebar = () => {
           </p>
                 </div>
             </div>
-            <div className={show ? "w-64 fixed  bg-white shadow h-full flex-col justify-between md:hidden transition duration-150 ease-in-out transform -translate-x-full" : "w-64 fixed  bg-white shadow h-full flex-col justify-between md:hidden transition duration-150 ease-in-out transform -translate-x-0"} id="mobile-nav">
+            <div className={show ? "w-64 fixed flex bg-white z-10 shadow h-full flex-col justify-between md:hidden transition duration-150 ease-in-out transform -translate-x-full" : "w-64 fixed flex bg-white shadow h-full flex-col justify-between md:hidden transition duration-150 ease-in-out transform z-10 -translate-x-0"} id="mobile-nav">
                 <div className="h-10 w-10 bg-red-600 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer" id="mobile-toggler" onClick={() => setShow(!show)}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-adjustments" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -187,7 +187,7 @@ const Sidebar = () => {
           </p>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
