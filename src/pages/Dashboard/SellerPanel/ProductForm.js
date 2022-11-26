@@ -7,10 +7,13 @@ import { setProductToDb } from '../../../api/products';
 import toast from 'react-hot-toast'
 import { getImageUrl } from '../../../api/imageUrl';
 import {useCategories} from '../../../hooks/useCategories'
+import useRole from '../../../hooks/useRole'
 
 const ProductForm = () => {
 
   const{user} = useContext(AuthContext)
+  const [, ,verification] = useRole(user?.email)
+  console.log(verification)
     const [isLoading,setIsLoading] = useState(false)
 
   const {
@@ -37,13 +40,13 @@ const ProductForm = () => {
             phoneNo:data.phone,
             location:data.location,
             purchase_year:data.purchase,
-            years_of_uses:data.useYear,
             description:data.description,
             post_date:date,
             seller:{
                 name:user.displayName,
                 email:user.email,
-                thumbnail:user.photoURL
+                thumbnail:user.photoURL,
+                verified:verification
             }
     }
     setProductToDb(product)
@@ -199,7 +202,6 @@ const ProductForm = () => {
                 )}
               </div>
             </div>
-            <div className="md:flex justify-between gap-2">
             <div className="mb-4 md:mb-0 space-y-1 text-sm">
                 <label htmlFor="purchase" className="block text-gray-600">
                   Year of purchase
@@ -208,7 +210,7 @@ const ProductForm = () => {
                   className="w-full px-4 py-3 text-gray-800 border border-red-500 focus:outline-red-500 rounded "
                   {...register("purchase", { required: "purchase is required" })}
                   id="purchase"
-                  type="text"
+                  type="date"
                   placeholder="Purchase year"
                   required
                 />
@@ -218,25 +220,6 @@ const ProductForm = () => {
                   </p>
                 )}
               </div>
-            <div className="space-y-1 text-sm">
-                <label htmlFor="use" className="block text-gray-600">
-                  How many year you use
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-red-500 focus:outline-red-500 rounded "
-                  {...register("useYear", { required: "Year of use is required" })}
-                  id="use"
-                  type="text"
-                  placeholder="year of use"
-                  required
-                />
-                {errors.use && (
-                  <p className="my-2 p-2 bg-red-200 font-bold text-red-500">
-                    {errors.use?.message}
-                  </p>
-                )}
-              </div>
-            </div >
               <div className="md:flex justify-between gap-2">
               <div className="mb-4 md:mb-0 space-y-1 text-sm">
               <label htmlFor="location" className="block text-gray-600">

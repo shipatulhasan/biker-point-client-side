@@ -7,11 +7,12 @@ import toast from 'react-hot-toast';
 import useRole from '../../hooks/useRole';
 import Loader from '../../components/Spinner/Loader';
 import { Link } from 'react-router-dom';
+import { MdVerified } from "react-icons/md";
 
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const {user,logOut,isLoading} = useContext(AuthContext)
-    const [role, roleLoading] = useRole(user?.email)
+    const [role, roleLoading,verification] = useRole(user?.email)
 
     if(isLoading || roleLoading){
         return <Loader />
@@ -54,12 +55,18 @@ const Sidebar = () => {
            
           </div>
           <div className="ml-2">
+              <div className='flex items-center'>
               <h1 className="text-base font-semibold text-black dark:text-gray-200">
                 {user?.displayName}
               </h1>
+              {
+                verification && <MdVerified className='text-blue-700 text-lg' />
+              }
+              </div>
               <p className="text-xs text-black dark:text-gray-400 leading-none">
                {user?.email}
               </p>
+              
             </div>
                     </div>
                     <ul className="mt-12 space-y-8">

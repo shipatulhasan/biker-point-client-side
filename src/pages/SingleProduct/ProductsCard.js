@@ -1,12 +1,17 @@
 import React from 'react';
 import formatDistanceToNowStrict from'date-fns/formatDistanceToNowStrict'
-import Loader from '../../components/Spinner/Loader';
+// import Loader from '../../components/Spinner/Loader';
+import { MdVerified } from "react-icons/md";
 
 const ProductsCard = ({product}) => {
-  const {image,title,originalprice,sellprice,condition,category,location,purchase_year,years_of_uses,description,post_date} = product
+  const {title,originalprice,sellprice,condition,location,purchase_year,description,post_date,seller} = product
+
+
 
 
   const post_time = formatDistanceToNowStrict( new Date(post_date), {addSuffix: true})
+  const useage = formatDistanceToNowStrict( new Date(purchase_year))
+  
     return (
         <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
             <div>
@@ -20,8 +25,10 @@ const ProductsCard = ({product}) => {
           </div>
 
           {/*  */}
-          <div className='space-y-5 md:space-y-10'>
+          <div className='space-y-5 '>
           <p className=" text-sm text-right"> posted {post_time}</p>
+          <div>
+
           <div className='space-y-4 md:space-y-0 md:flex justify-between'>
           <div className="space-y-1">
                 <h3 className="text-xl font-bold leading-snug sm:pr-8">{title}</h3>
@@ -31,18 +38,45 @@ const ProductsCard = ({product}) => {
 							<p className="text-lg font-semibold"> Resale Price: ${sellprice}</p>
 							<p className="text-sm">Original price: ${originalprice}</p>
 						</div>
-          
-            
-            <hr className="mb-5 border-gray-300" />
           </div>
+          <div className='my-4'>
+							<p className="text-sm font-semibold"> Years of use: {useage}</p> 
+							<p className="text-sm font-semibold">Condition: {condition}</p>
+						</div>
+          </div>
+            <hr className=" border-gray-300" />
           <div>
             <h2 className='text-xl font-bold '>
                 Description
             </h2>
+
         <p className="my-3 text-sm text-gray-900">
               {description?.length>250 ? description.slice(0,250) + '...' : description }
             </p>
-            <div className='my-8'>
+            <hr className="my-5 border-gray-300" />
+              <p className=" font-bold">Seller information</p>
+              <div
+            
+            className="flex items-center py-3 text-sm text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <img
+              className="flex-shrink-0 ring-2 border-2 ring-red-600 object-cover mx-1 rounded-full w-12 h-12"
+              src={seller?.thumbnail}
+              alt="img"
+            />
+            <div className="ml-2 flex items-center">
+              <h1 className="text-base font-bold text-black dark:text-gray-200">
+              {seller?.name}
+              </h1>
+              {
+                seller?.verified && <MdVerified className='text-blue-700 text-lg' />
+              }
+              
+             
+            </div>
+          </div>
+        
+            <div className='my-4'>
 
             <button
            
