@@ -12,10 +12,10 @@ import { MdVerified } from "react-icons/md";
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const {user,logOut,isLoading} = useContext(AuthContext)
-    const [role, roleLoading,verification] = useRole(user?.email)
+    const {role, roleLoading,verification} = useRole(user?.email)
 
     if(isLoading || roleLoading){
-        return <Loader />
+        return <Loader height={'min-h-[60vh]'} />
     }
 
     let menuList

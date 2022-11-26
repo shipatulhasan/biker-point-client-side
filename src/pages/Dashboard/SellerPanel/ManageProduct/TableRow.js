@@ -2,7 +2,7 @@
 import React from 'react';
 
 const TableRow = ({product,handleDelete,index}) => {
-  const {_id,image,title,sellprice,category,condition} = product
+  const {image,title,sellprice,category,condition} = product
     return (
         <tr>
           <td className='px-5 font-bold border-b border-gray-200 bg-white text-sm'>

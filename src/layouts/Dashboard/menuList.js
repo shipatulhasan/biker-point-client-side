@@ -11,7 +11,7 @@ export const userMenu =
           <li
             className={`${
               isActive ? "bg-red-500 text-white" : "text-black"
-            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
+            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
                   <div className="flex gap-2 items-center">
                   <AiOutlineShoppingCart className="" />
@@ -28,7 +28,7 @@ export const sellersMenu = <>
           <li
             className={`${
               isActive ? "bg-red-500 text-white" : "text-black"
-            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
+            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
                   <div className="flex gap-2 items-center">
                   <BsFillCloudPlusFill className="" />
@@ -43,7 +43,7 @@ export const sellersMenu = <>
           <li
             className={`${
               isActive ? "bg-red-500 text-white" : "text-black"
-            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
+            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
                   <div className="flex gap-2 items-center">
                   <AiOutlineShoppingCart className="" />
@@ -58,7 +58,7 @@ export const sellersMenu = <>
           <li
             className={`${
               isActive ? "bg-red-500 text-white" : "text-black"
-            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
+            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
                   <div className="flex gap-2 items-center">
                   <HiUserGroup className="" />
@@ -76,7 +76,7 @@ export const adminMenu = <>
           <li
             className={`${
               isActive ? "bg-red-500 text-white" : "text-black"
-            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
+            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
                   <div className="flex gap-2 items-center">
                   <HiUserGroup className="" />
@@ -91,11 +91,11 @@ export const adminMenu = <>
           <li
             className={`${
               isActive ? "bg-red-500 text-white" : "text-black"
-            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
+            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
                   <div className="flex gap-2 items-center">
                   <HiUserGroup className=""/>
-                            <span className='' >all-sellers</span>
+                            <span className='' >All sellers</span>
                         </div>
             
           </li>
@@ -106,7 +106,7 @@ export const adminMenu = <>
           <li
             className={`${
               isActive ? "bg-red-500 text-white" : "text-black"
-            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2`}
+            } w-full hover:bg-red-500 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
                   <div className="flex gap-2 items-center">
                   <MdReportGmailerrorred className="" />

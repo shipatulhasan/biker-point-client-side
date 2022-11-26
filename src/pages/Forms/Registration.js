@@ -53,8 +53,9 @@ const Registration = () => {
             setCreateNewUser({
                 
                 email,
-               
+                image:data,
                 role,
+                name:userName
               });
             form.reset();
             setIsLoading(false);
@@ -82,6 +83,8 @@ const Registration = () => {
         setCreateNewUser({
           
           email: user?.email,
+          image:user.photoURL,
+          name:user.displayName,
           role: "user",
         });
         console.log(result.user);

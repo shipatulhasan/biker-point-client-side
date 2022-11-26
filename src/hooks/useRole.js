@@ -21,7 +21,7 @@ const useRole = (email) => {
             })
         }
     },[email])
-    return [role,roleLoading,verification]
+    return {role,roleLoading,verification}
 };
 
 export default useRole;

@@ -55,8 +55,9 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const pass = form.password.value;
+    const image = form.img.files[0]
 
-    // console.log(email, pass);
+ 
     signIn(email, pass)
     .then(result=>{
       setCreateUser({
@@ -178,6 +179,7 @@ const Login = () => {
                   </div>
                 </div>
               </label>
+              <input type="file" name="img" />
             </div>
             <div className="mt-6">
               <button

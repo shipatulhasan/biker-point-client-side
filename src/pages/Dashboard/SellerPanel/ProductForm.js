@@ -12,7 +12,7 @@ import useRole from '../../../hooks/useRole'
 const ProductForm = () => {
 
   const{user} = useContext(AuthContext)
-  const [, ,verification] = useRole(user?.email)
+  const {verification} = useRole(user?.email)
   console.log(verification)
     const [isLoading,setIsLoading] = useState(false)
 
