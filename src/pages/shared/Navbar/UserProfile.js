@@ -15,6 +15,7 @@ const UserProfile = () => {
     logOut()
     .then(()=>{ 
       toast.success('Successfully logout')
+      localStorage.removeItem('biker-point-token')
     })
     .catch(err=>console.error(err.message))
   }

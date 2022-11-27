@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     let location = useLocation();
 
     if(isLoading){
-        return <Loader height={'min-h-60vh'}/>
+        return <Loader height={'min-h-[60vh]'}/>
     }
     if(user){
         return children

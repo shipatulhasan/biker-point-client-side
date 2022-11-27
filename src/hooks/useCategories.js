@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 export const useCategories = ()=>{
     const [categories,setCategories] = useState([])
     const [catLoading,setCatLoading] = useState(true)
+    
 
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_api}/categories`)

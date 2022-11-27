@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { useCategories } from '../../../hooks/useCategories';
 import Loader from '../../../components/Spinner/Loader'
 import CategoryCard from './CategoryCard';
 
-const CategorySection = () => {
+const CategorySection = ({slice_range}) => {
   const [categories,catLoading] = useCategories()
+  const {init,rest} = slice_range
 
     return (
         <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-8">
@@ -21,20 +22,13 @@ const CategorySection = () => {
           catLoading ? <Loader height={'min-h-[60vh]'} /> : <div className="grid gap-5 py-2 mb-8 md:grid-cols-3">
 
           {
-            categories.map(category=><CategoryCard key={category._id} category={category} />)
+            categories.slice(init,rest).map(category=><CategoryCard key={category._id} category={category} />)
           }
       
         </div>
         }
         
-        <div className="text-center">
-          <Link
-            to="/categories"
-            className=" px-6 py-2 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none"
-          >
-            View All
-          </Link>
-        </div>
+       
       </div>
     );
 };

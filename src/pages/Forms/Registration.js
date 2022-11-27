@@ -23,8 +23,12 @@ const Registration = () => {
   const [createNewUser, setCreateNewUser] = useState("");
   const [token] = useToken(createNewUser);
   // use navigate
-  const navigate = useNavigate();
- 
+  let navigate = useNavigate();
+
+  if (token) {
+    navigate("/");
+    return
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +53,8 @@ const Registration = () => {
             toast.success("Successfully registerd");
             handleUpdateProfile(userName, data);
             setError("");
-          
+            form.reset();
+            setIsLoading(false);
             setCreateNewUser({
                 
                 email,
@@ -57,8 +62,7 @@ const Registration = () => {
                 role,
                 name:userName
               });
-            form.reset();
-            setIsLoading(false);
+            
           })
           .catch((err) => {
             const error = err.message;
@@ -80,15 +84,17 @@ const Registration = () => {
       .then((result) => {
         const user = result.user;
         setError("");
+        console.log(result.user);
+        toast.success("Successfully Registered");
         setCreateNewUser({
           
           email: user?.email,
           image:user.photoURL,
           name:user.displayName,
           role: "user",
+          
         });
-        console.log(result.user);
-        toast.success("Successfully Registered");
+        
       })
       .catch((err) => {
         console.error(err);
@@ -112,10 +118,7 @@ const Registration = () => {
   };
 
 
-  if (token) {
-    navigate("/");
-    return
-  }
+ 
 
 
 

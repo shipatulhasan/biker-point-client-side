@@ -29,6 +29,10 @@ const Login = () => {
 
   let from = location.state?.from?.pathname || "/";
 
+//  if(token){
+
+//  }
+
   // sign in with google
 
   const handleSignInWithGoogle = () => {
@@ -41,6 +45,7 @@ const Login = () => {
         });
         console.log(result.user);
         toast.success("Successfully Registered");
+      
       })
       .catch((err) => {
         console.error(err);
@@ -55,9 +60,7 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const pass = form.password.value;
-    const image = form.img.files[0]
 
- 
     signIn(email, pass)
     .then(result=>{
       setCreateUser({
@@ -65,8 +68,10 @@ const Login = () => {
       });
         toast.success('Successfully logged in')
         setError('')
-        form.reset()
         
+        navigate(from, { replace: true });
+        
+        form.reset() 
 
     })
     .catch((err) => {
@@ -77,9 +82,8 @@ const Login = () => {
       setIsLoading(false)
     });
   };
-  if(token){
-    navigate(from, { replace: true });
-  }
+
+ 
 
   return (
     <div className="h-full w-full py-5 px-4 bg-center bg-no-repeat bg-cover bg-white ">
@@ -158,6 +162,7 @@ const Login = () => {
                   aria-label="enter email adress"
                   type="email"
                   name="email"
+                  placeholder="jhon@hotmail.com"
                   className="bg-gray-200 border rounded focus:outline-none text-base font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                 />
               </label>
@@ -169,6 +174,7 @@ const Login = () => {
                   <input
                     type={viewPass ? "text" : "password"}
                     name="password"
+                    placeholder="***********"
                     className="bg-gray-200 border rounded focus:outline-none text-base font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                   />
                   <div
@@ -179,12 +185,13 @@ const Login = () => {
                   </div>
                 </div>
               </label>
-              <input type="file" name="img" />
+              
             </div>
             <div className="mt-6">
               <button
                 aria-label="create my account"
                 className="focus:ring-2 focus:ring-offset-2 focus:ring-slate-100 text-base font-semibold leading-none text-white focus:outline-none bg-red-500 border rounded hover:bg-red-600 py-4 w-full"
+                type="submit"
               >
                 {
                   isLoading ? <LoderText disabled/> : 'Login'

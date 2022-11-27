@@ -8,12 +8,13 @@ import toast from 'react-hot-toast'
 import { getImageUrl } from '../../../api/imageUrl';
 import {useCategories} from '../../../hooks/useCategories'
 import useRole from '../../../hooks/useRole'
+import { useNavigate } from "react-router-dom";
 
 const ProductForm = () => {
 
   const{user} = useContext(AuthContext)
   const {verification} = useRole(user?.email)
-  console.log(verification)
+  const navigate = useNavigate()
     const [isLoading,setIsLoading] = useState(false)
 
   const {
@@ -36,8 +37,7 @@ const ProductForm = () => {
             sellprice:data.sellprice,
             image:Imagedata,
             condition:data.condition,
-            category:data.category,
-            phoneNo:data.phone,
+            category:data.category,          
             location:data.location,
             purchase_year:data.purchase,
             description:data.description,
@@ -46,6 +46,7 @@ const ProductForm = () => {
                 name:user.displayName,
                 email:user.email,
                 thumbnail:user.photoURL,
+                phoneNo:data.phone,
                 verified:verification
             }
     }
@@ -54,6 +55,7 @@ const ProductForm = () => {
         console.log(data)
         toast.success('Product added successfully')
         setIsLoading(false)
+        navigate('/dashboard/manage-products')
         reset()
 
        
@@ -191,7 +193,7 @@ const ProductForm = () => {
                     required: "category is required",
                   })}
                 >{
-                    categories.map(cat=><option key={cat._id}>{cat.name}</option>)
+                    categories.map((cat,i)=><option key={i}>{cat.name}</option>)
                 }
                 </select>
 

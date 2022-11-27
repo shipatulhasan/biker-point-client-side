@@ -1,25 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import ProductsCard from './ProductsCard';
 import {useCategories} from '../../hooks/useCategories'
-import img from '../../assets/banner/motorcycle.jpg'
-import { NavLink, useLoaderData, useLocation, useNavigation } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import Loader from '../../components/Spinner/Loader';
 import CategorySidebar from './CategorySidebar';
 
+import toast from 'react-hot-toast';
+import { setReportedProduct } from '../../api/products';
+
 
 const SingleProduct = () => {
-
-    const [categories,catLoading] = useCategories()
-    const products = useLoaderData()
-    const navigation = useNavigation()
+  
+  const [categories,catLoading] = useCategories()
+  
+     const products = useLoaderData()
     const {state} = useLocation()
+    const [processing,setProcessing] = useState(false)
 
+ 
 
-    if(navigation.state === "loading" || catLoading){
+    const handleReport=(product)=>{
+      setProcessing(true)
+      setReportedProduct(product)
+      .then(data=>{
+        if(data.modifiedCount>0){
+          toast.success('You reported this product')
+          setProcessing(false)     
+        }
+
+      })
+      .catch(err=>console.error(err.message))
+    }
+    if(catLoading){
       return <Loader height={'min-h-[60vh]'} />
     }
-
     return (
 
         <div>
@@ -35,14 +50,14 @@ const SingleProduct = () => {
                         }
 
                     </div>
-                    <div className='md:col-span-4 space-y-5 md:space-y-10'>
+                    <div className='md:col-span-4 space-y-8 md:space-y-10'>
                       {
                         products.length===0 && <h2 className='text-center text-2xl font-semibold p-5 '>
                         No Products Available
                     </h2>
                       }
                       {
-                        products.map(product=><ProductsCard key={product._id} product={product}  />)
+                        products.map(product=><ProductsCard key={product._id} isLoading={processing}  product={product} handleReport={handleReport} />)
                       }
                     
                     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const CategorySidebar = ({cat,lastItem}) => {
-    const {img,name,_id} = cat
+    const {name,_id} = cat
     return (
         <NavLink to ={`/category/${_id}`} state={cat}>
                             {({ isActive }) => (

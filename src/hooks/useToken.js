@@ -21,7 +21,7 @@ export const useToken = (user) => {
                 }
             })
         }
-    },[user,token])
+    },[user])
        
 
     return [token]

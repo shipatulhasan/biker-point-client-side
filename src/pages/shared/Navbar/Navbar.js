@@ -39,10 +39,6 @@ const Navbar = () => {
     </>
   );
 
-  if(isLoading){
-    return <Loader height={'h-10'}/>
-  }
-
   return (
     <nav className=" z-10 w-full  dark:bg-gray-800">
       <div className="container px-6 py-4 mx-auto rounded">
@@ -115,7 +111,7 @@ const Navbar = () => {
             <div className="flex items-center mt-4 lg:mt-0">
               {user && (
                 <div className="flex items-center -ml-1 lg:ml-0">
-                  <UserProfile />
+                  {isLoading ? <Loader height={'min-h-5'} />:<UserProfile />}
                   <h3 className="mx-2 text-white dark:text-gray-200 lg:hidden">
                     {user?.displayName}
                   </h3>
