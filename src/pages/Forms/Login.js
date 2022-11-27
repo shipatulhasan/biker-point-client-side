@@ -31,8 +31,10 @@ const Login = () => {
 
  if(token){
   navigate(from, { replace: true });
+  setIsLoading(false)
   return
  }
+
 
   // sign in with google
 
@@ -66,6 +68,7 @@ const Login = () => {
         toast.success('Successfully logged in')
         setError('')  
         form.reset() 
+        setIsLoading(false)
 
     })
     .catch((err) => {

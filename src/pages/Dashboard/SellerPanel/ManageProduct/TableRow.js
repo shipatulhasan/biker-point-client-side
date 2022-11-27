@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const TableRow = ({product,handleDelete,index}) => {
+const TableRow = ({product,handleDelete,handleAddvertise,index}) => {
   const {image,title,sellprice,category,condition} = product
     return (
         <tr>
@@ -43,10 +43,21 @@ const TableRow = ({product,handleDelete,index}) => {
         </td>
         <td className='px-5 font-bold border-b border-gray-200 bg-white text-sm capitalize'>
           {
-            product?.status && product?.status==='sold' ? 
+            product?.status ? 
             <p className='bg-red-200 text-red-600 text-center font-semibold rounded-full px-2 py-1'>{product.status}</p>
-            :
-            <p className='text-green-900 bg-green-200 text-center font-semibold rounded-full px-2 py-1'>Available</p>
+            :<p className='text-green-900 bg-green-200 text-center font-semibold rounded-full px-2 py-1'>Available</p>
+
+          }
+          
+          
+        </td>
+        <td className='px-5 font-bold border-b border-gray-200 bg-white text-sm capitalize'>
+          {
+            !product?.advertise ? 
+            <p onClick={()=>handleAddvertise(product)} className='text-blue-900 bg-blue-200 text-center font-semibold rounded-full px-2 py-1 hover:cursor-pointer'>
+            Addvertise
+          </p>
+            :<p className='text-fuchsia-900 bg-fuchsia-200 text-center font-semibold rounded-full px-2 py-1'>Running...</p>
 
           }
           

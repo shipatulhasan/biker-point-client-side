@@ -42,12 +42,38 @@ const ManageProducts = () => {
 
       }
 
+      const handleAddvertise = (product)=>{
+        const productId = product._id
+        const confirmDelete = window.confirm(`would you like to run add on ${product.name}`)
+        if(confirmDelete){
+          delete product._id
+
+          fetch(`${process.env.REACT_APP_api}/advertise`,{
+            method:'post',
+            headers:{
+              'content-type':'application/json',
+              authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
+          },
+          body:JSON.stringify({...product,productId})
+
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            toast.success('product is send for advertise')
+            refetch()
+            console.log(data)
+          })
+
+        }
+
+      }
+
 
 
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
           
-            <div className='px-4 sm:px-8 py-4 overflow-x-auto'>
+            <div className='px-4  py-4 overflow-x-auto'>
               {
                 products?.length===0 ? <p className='text-black text-2xl font-bold'>No product added yet. wanna add new product? <Link to='/dashboard/add-product' className='text-red-600 font-semibold '>Click here</Link></p>
                  :
@@ -95,6 +121,13 @@ const ManageProducts = () => {
                          scope='col'
                          className='px-5 py-3   border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-bold'
                        >
+                         Advertise
+                       </th>
+                 
+                       <th
+                         scope='col'
+                         className='px-5 py-3   border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-bold'
+                       >
                          Action
                        </th>
                      </tr>
@@ -102,7 +135,7 @@ const ManageProducts = () => {
                   
                    <tbody>
                        {
-                         products.map((product,i)=><TableRow key={product._id} product={product} index={i} handleDelete={handleDelete} />)
+                         products.map((product,i)=><TableRow key={product._id} product={product} index={i} handleDelete={handleDelete} handleAddvertise={handleAddvertise} />)
                        }
                   
                    </tbody>

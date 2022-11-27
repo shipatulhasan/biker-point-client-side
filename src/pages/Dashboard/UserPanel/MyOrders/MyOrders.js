@@ -57,14 +57,15 @@ const MyOrders = () => {
 
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
-          
-        <div className='px-4 sm:px-8 py-4 overflow-x-auto'>
+
+{
+               isLoading ? <Loader /> :
+               <>
           {
             bookings?.length===0 ? <p className='text-black text-2xl font-bold'>No booking booked yet. wanna booke some products ? <Link to='/categories' className='text-red-600 font-semibold '>Click here</Link></p>
              :
-             <div className='min-w-full shadow rounded-lg overflow-x-auto'>
-             {
-               isLoading ? <Loader /> : <>
+               <div className='px-4 sm:px-8 py-4'>
+                 <div className='min-w-full shadow rounded-lg overflow-x-auto'>
                 <table className='min-w-full leading-normal'>
                <thead className='bg-red-200'>
                  <tr>
@@ -106,13 +107,17 @@ const MyOrders = () => {
               
                </tbody>
              </table>
-               </>
-             }
+               
+               
+               
+               </div>
+       
             
            </div>
           }
+          </>
+             }
          
-        </div>
       </div>
     );
 };

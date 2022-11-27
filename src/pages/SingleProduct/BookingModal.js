@@ -30,7 +30,8 @@ const BookingModal = ({ show, setShow, product }) => {
     fetch(`${process.env.REACT_APP_api}/booking`,{
       method:'post',
       headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
       },
       body:JSON.stringify(bookingInfo)
     })
