@@ -24,14 +24,15 @@ const Login = () => {
 
   // user redirect 
 
-  let navigate = useNavigate();
-  let location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   let from = location.state?.from?.pathname || "/";
 
-//  if(token){
-
-//  }
+ if(token){
+  navigate(from, { replace: true });
+  return
+ }
 
   // sign in with google
 
@@ -40,10 +41,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setError("");
-        setCreateUser({
-          email: user?.email
-        });
-        console.log(result.user);
+        setCreateUser(user?.email);
         toast.success("Successfully Registered");
       
       })
@@ -63,14 +61,10 @@ const Login = () => {
 
     signIn(email, pass)
     .then(result=>{
-      setCreateUser({
-        email:email
-      });
+      const user = result.user
+      setCreateUser(user?.email);
         toast.success('Successfully logged in')
-        setError('')
-        
-        navigate(from, { replace: true });
-        
+        setError('')  
         form.reset() 
 
     })

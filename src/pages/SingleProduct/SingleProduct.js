@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import ProductsCard from './ProductsCard';
 import {useCategories} from '../../hooks/useCategories'
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigation } from 'react-router-dom';
 import Loader from '../../components/Spinner/Loader';
 import CategorySidebar from './CategorySidebar';
 
@@ -17,8 +17,8 @@ const SingleProduct = () => {
      const products = useLoaderData()
     const {state} = useLocation()
     const [processing,setProcessing] = useState(false)
+    const navigation = useNavigation();
 
- 
 
     const handleReport=(product)=>{
       setProcessing(true)
@@ -26,13 +26,17 @@ const SingleProduct = () => {
       .then(data=>{
         if(data.modifiedCount>0){
           toast.success('You reported this product')
-          setProcessing(false)     
+          setProcessing(false)
+             
         }
 
       })
       .catch(err=>console.error(err.message))
     }
-    if(catLoading){
+
+
+
+    if(navigation.state === "loading"||catLoading){
       return <Loader height={'min-h-[60vh]'} />
     }
     return (

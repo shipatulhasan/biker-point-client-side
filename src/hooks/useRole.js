@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../contexts/AuthProvider';
 
-const useRole = (email) => {
+export const useRole = (email) => {
+    const {logOut} = useContext(AuthContext)
     const [role,setRole] = useState('')
     const [verification,setVerification] = useState(false)
     const [roleLoading,setRoleLoading] = useState(true)
@@ -12,7 +14,14 @@ const useRole = (email) => {
                     authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
                 }
             })  
-            .then(res=>res.json())
+            .then(res=>{
+                if(res.status===401 || res.status===403 ){
+                    return logOut()
+                    .then(()=>{ })
+                    .catch(err=>console.error(err.message))
+                }
+                return res.json()
+            })
             .then(data=>{
                 setRole(data?.role)
                 setVerification(data?.verified)
@@ -20,8 +29,7 @@ const useRole = (email) => {
                
             })
         }
-    },[email])
+    },[email,logOut])
     return {role,roleLoading,verification}
 };
 
-export default useRole;

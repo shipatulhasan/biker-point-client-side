@@ -51,9 +51,10 @@ const ManageProducts = () => {
               {
                 products?.length===0 ? <p className='text-black text-2xl font-bold'>No product added yet. wanna add new product? <Link to='/dashboard/add-product' className='text-red-600 font-semibold '>Click here</Link></p>
                  :
-                 <div className='min-w-full shadow rounded-lg overflow-x-auto'>
+                <>
                  {
                    isLoading ? <Loader /> : <>
+                    <div className='min-w-full shadow rounded-lg overflow-x-auto'>
                     <table className='min-w-full leading-normal'>
                    <thead className='bg-red-200'>
                      <tr>
@@ -106,13 +107,16 @@ const ManageProducts = () => {
                   
                    </tbody>
                  </table>
+                 </div>
                    </>
                  }
                 
-               </div>
-              }
+               
+              </>
              
-            </div>
+              }
+              </div>
+            
           </div>
      
     );

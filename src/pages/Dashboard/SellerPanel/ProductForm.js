@@ -7,7 +7,7 @@ import { setProductToDb } from '../../../api/products';
 import toast from 'react-hot-toast'
 import { getImageUrl } from '../../../api/imageUrl';
 import {useCategories} from '../../../hooks/useCategories'
-import useRole from '../../../hooks/useRole'
+import {useRole} from '../../../hooks/useRole'
 import { useNavigate } from "react-router-dom";
 
 const ProductForm = () => {

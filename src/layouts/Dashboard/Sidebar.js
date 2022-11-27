@@ -4,7 +4,7 @@ import { FaFacebookF, FaLinkedinIn, FaUser, FaWhatsapp } from "react-icons/fa";
 import { adminMenu, sellersMenu, userMenu } from './menuList';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
-import useRole from '../../hooks/useRole';
+import {useRole} from '../../hooks/useRole';
 import Loader from '../../components/Spinner/Loader';
 import { Link } from 'react-router-dom';
 import { MdVerified } from "react-icons/md";
@@ -48,9 +48,9 @@ const Sidebar = () => {
                     </Link>
                     <div className='flex items-center gap-0 mt-2'>
 
-                    <div className="w-12 h-12 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center">
+                    <div className="w-11 h-11 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center flex-shrink-0">
            {
-             isLoading ? <FaUser className="text-white text-xl"/>:<img src={user?.photoURL} className="object-cover w-full h-full" alt="avatar" />
+             !user?.photoURL ? <FaUser className="text-white text-xl"/>:<img src={user?.photoURL} className="object-cover w-full h-full" alt="avatar" />
            }
            
           </div>

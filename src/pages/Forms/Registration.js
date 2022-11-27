@@ -7,6 +7,7 @@ import { useToken } from "../../hooks/useToken";
 import logo from "../../assets/brand/logo-png1.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 import LoaderText from '../../components/Spinner/LoderText'
+import { saveUser } from "../../api/saveUser";
 
 const Registration = () => {
   const [error, setError] = useState("");
@@ -54,14 +55,19 @@ const Registration = () => {
             handleUpdateProfile(userName, data);
             setError("");
             form.reset();
-            setIsLoading(false);
-            setCreateNewUser({
-                
+            
+            const userData = {
                 email,
                 image:data,
                 role,
                 name:userName
-              });
+              };
+              saveUser(userData)
+              .then(data=>{
+                console.log(data)
+                setCreateNewUser(email)
+                setIsLoading(false);
+        })
             
           })
           .catch((err) => {
@@ -84,16 +90,20 @@ const Registration = () => {
       .then((result) => {
         const user = result.user;
         setError("");
-        console.log(result.user);
         toast.success("Successfully Registered");
-        setCreateNewUser({
+        const userData={
           
           email: user?.email,
           image:user.photoURL,
           name:user.displayName,
-          role: "user",
+          role: "user"
           
-        });
+        }
+        saveUser(userData)
+        .then(data=>{
+          console.log(data)
+          setCreateNewUser(user?.email)
+        })
         
       })
       .catch((err) => {

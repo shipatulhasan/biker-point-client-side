@@ -7,7 +7,6 @@ export const useUserData = (role) => {
         queryKey:['users',role],
         queryFn:async()=>{
             if(role){
-
                 const res= await fetch(`${process.env.REACT_APP_api}/user?role=${role}`,{
                     headers:{
                         authorization:`Bearer ${localStorage.getItem('biker-point-token')}`

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { FaRegUser, FaUser } from "react-icons/fa";
+import {  FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -8,14 +8,13 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 const UserProfile = () => {
   
   const [isClicked, setIsClicked] = useState(false);
-  const {user,logOut,isLoading} = useContext(AuthContext)
+  const {user,logOut} = useContext(AuthContext)
 
 
   const handleLogOut = ()=>{
     logOut()
     .then(()=>{ 
       toast.success('Successfully logout')
-      localStorage.removeItem('biker-point-token')
     })
     .catch(err=>console.error(err.message))
   }
@@ -30,7 +29,7 @@ const UserProfile = () => {
       >
          <div className="w-12 h-12 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center">
            {
-             isLoading ? <FaUser className="text-white text-xl"/>:<img src={user?.photoURL} className="object-cover w-full h-full" alt="avatar" />
+             !user?.photoURL ? <FaUser className="text-white text-xl"/>:<img src={user?.photoURL} className="object-cover w-full h-full" alt="avatar" />
            }
            
           </div>

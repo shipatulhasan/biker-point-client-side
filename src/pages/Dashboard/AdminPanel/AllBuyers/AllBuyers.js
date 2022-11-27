@@ -27,12 +27,16 @@ const AllBuyers = () => {
 
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
-          <p>
-          </p>
-        <div className='px-4 sm:px-8 py-4 overflow-x-auto'>
-          <div className='min-w-full shadow rounded-lg overflow-x-auto'>
+
+          {
+            users.length===0 && <p className='text-black text-2xl font-bold'>No User's register yet</p>
+          }
+       
+        
             {
               isLoading ? <Loader /> : <>
+              <div className='px-4 sm:px-8 py-4 overflow-x-auto'>
+          <div className='min-w-full shadow rounded-lg '>
                <table className='min-w-full leading-normal'>
               <thead className='bg-red-200'>
                 <tr>
@@ -70,11 +74,12 @@ const AllBuyers = () => {
              
               </tbody>
             </table>
+            </div>
+        </div>
               </>
             }
            
-          </div>
-        </div>
+        
       </div>
     );
 };

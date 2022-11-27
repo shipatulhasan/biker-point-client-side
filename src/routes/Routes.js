@@ -7,17 +7,20 @@ import AllSellers from "../pages/Dashboard/AdminPanel/AllSellers/AllSellers";
 import AddProduct from "../pages/Dashboard/SellerPanel/AddProduct";
 import ManageProducts from "../pages/Dashboard/SellerPanel/ManageProduct/ManageProducts";
 import MyOrders from "../pages/Dashboard/UserPanel/MyOrders/MyOrders";
+import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Forms/Login";
 import Registration from "../pages/Forms/Registration";
 import Home from "../pages/Home/Home";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
 import PrivateRoute from '../routes/PrivateRoute'
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
     {
         path:'/',
         element:<Main />,
+        errorElement:<ErrorPage/>,
         children:[
             {
                 path:'/',
@@ -42,6 +45,7 @@ const router = createBrowserRouter([
     {
         path:'/dashboard',
         element:<PrivateRoute><Dashboard /></PrivateRoute>,
+        errorElement:<ErrorPage/>,
         children:[
             {
                 path:'/dashboard/my-orders',
@@ -58,12 +62,12 @@ const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/all-buyers',
-                element:<AllBuyers />
+                element:<AdminRoute><AllBuyers /></AdminRoute>
 
             },
             {
                 path:'/dashboard/all-sellers',
-                element:<AllSellers />
+                element:<AdminRoute><AllSellers /></AdminRoute>
 
             },
         ]
