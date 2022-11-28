@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {CardElement,useStripe,useElements} from '@stripe/react-stripe-js'
 import LoaderText from '../../../../components/Spinner/LoderText';
 import { Link } from 'react-router-dom';
-import LoderText from '../../../../components/Spinner/LoderText';
 
 const CheckoutForm = ({booking}) => {
 
@@ -15,7 +14,7 @@ const CheckoutForm = ({booking}) => {
 
     const stripe = useStripe();
     const elements = useElements();
-    const {name,email,phone,price,_id} = booking
+    const {name,email,productId,product_title,price,_id} = booking
 
     useEffect(() => {
       // Create PaymentIntent as soon as the page loads
@@ -80,10 +79,43 @@ const CheckoutForm = ({booking}) => {
               setPoccessing(false)
               return
           }
+
           if(paymentIntent.status==='succeeded'){
-            setSuccess('Congrats your payment completed we will mail you your invoice')
-            setTransactionID(paymentIntent.id)
-            setPoccessing(false)
+
+            const payment = {
+              productId,
+              product_title,
+              price,
+              email,
+              bookingId:_id,
+              transactionID:paymentIntent.id
+
+            }
+
+            // store payment info
+
+            fetch(`${process.env.REACT_APP_api}/payments`,{
+              method:'POST',
+              headers:{
+                'Content-Type':'application/json',
+                authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
+            },
+              body: JSON.stringify(payment),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data)
+                if(data.insertedId){
+
+                  setSuccess('Congrats your payment completed we will mail you your invoice')
+                  setTransactionID(paymentIntent.id)
+                  setPoccessing(false)
+                }
+                
+
+              });
+
+
           }
 
        

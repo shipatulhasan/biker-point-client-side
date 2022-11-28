@@ -43,15 +43,19 @@ const TableRow = ({product,handleDelete,handleAddvertise,index}) => {
         </td>
         <td className='px-5 font-bold border-b border-gray-200 bg-white text-sm capitalize'>
           {
-            product?.status ? 
-            <p className='bg-red-200 text-red-600 text-center font-semibold rounded-full px-2 py-1'>{product.status}</p>
+            product?.paid ? 
+            <p className='bg-red-200 text-red-600 text-center font-semibold rounded-full px-2 py-1'>sold</p>
             :<p className='text-green-900 bg-green-200 text-center font-semibold rounded-full px-2 py-1'>Available</p>
 
           }
           
           
         </td>
+        
         <td className='px-5 font-bold border-b border-gray-200 bg-white text-sm capitalize'>
+        {
+          !product.paid && <>
+          
           {
             !product?.advertise ? 
             <p onClick={()=>handleAddvertise(product)} className='text-blue-900 bg-blue-200 text-center font-semibold rounded-full px-2 py-1 hover:cursor-pointer'>
@@ -60,6 +64,9 @@ const TableRow = ({product,handleDelete,handleAddvertise,index}) => {
             :<p className='text-fuchsia-900 bg-fuchsia-200 text-center font-semibold rounded-full px-2 py-1'>Running...</p>
 
           }
+          </>
+        }
+         
           
           
         </td>

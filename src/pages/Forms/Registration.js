@@ -91,8 +91,6 @@ const Registration = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        setError("");
-        toast.success("Successfully Registered");
         const userData={
           
           email: user?.email,
