@@ -5,11 +5,11 @@ import { MdVerified } from "react-icons/md";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css/navigation";
 import './ad.css'
 
 // import required modules
-import { Pagination } from "swiper";
+import { Navigation } from "swiper";
 import Loader from '../../../components/Spinner/Loader';
 
 
@@ -17,12 +17,7 @@ import Loader from '../../../components/Spinner/Loader';
 
 const Advertise = ({advertises,isLoading}) => {
 
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + "</span>";
-        },
-      };
+  
 
       if(isLoading){
         return <Loader height={'min-h-[60vh]'} />
@@ -33,8 +28,9 @@ const Advertise = ({advertises,isLoading}) => {
             Featured
           </h2>
         <Swiper
-          pagination={pagination}
-          modules={[Pagination]}
+          navigation={true}
+          modules={[Navigation]}
+          grabCursor={true}
           className="mySwiper"
         >
             {

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Loader from "../../components/Spinner/Loader";
 import CategorySection from "../shared/CategoriesSection/CategorySection";
 import Advertise from "./Advertise/Advertise";
+import NewsLetter from "./NewLetter/NewsLetter";
 import Slider from "./Slider/Slider";
 
 const Home = () => {
@@ -44,10 +45,14 @@ const Home = () => {
         </div>
       </div>
       {isLoading ? <Loader height={'min-h-[60vh]'} /> :
-          advertises?.length>0 && <div className="pb-16 lg:pb-20">
+          advertises?.length>0 && <div className="pb-16 lg:pb-10">
           <Advertise advertises={advertises} isLoading={isLoading}/>
         </div>
         }
+
+        <div>
+          <NewsLetter/>
+        </div>
     </div>
   );
 };
