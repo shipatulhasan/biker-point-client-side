@@ -93,8 +93,7 @@ const ProductsCard = ({product,handleReport,isLoading}) => {
           >
             Book now
           </button>
-          {
-            !product?.reported &&
+        
             <button 
             onClick={()=>handleReport(product)}
             className='text-red-700 bg-red-200 rounded px-3 py-1 hover:cursor-pointer flex items-center gap-2 font-bold'>
@@ -108,8 +107,6 @@ const ProductsCard = ({product,handleReport,isLoading}) => {
             }
               
             </button>
-
-          }
           {
             show &&  <BookingModal
             show={show}

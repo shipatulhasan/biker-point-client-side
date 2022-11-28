@@ -49,7 +49,7 @@ const ManageProducts = () => {
 
       const handleAddvertise = (product)=>{
         const productId = product._id
-        const confirmDelete = window.confirm(`would you like to run add on ${product.name}`)
+        const confirmDelete = window.confirm(`would you like to run add on ${product?.title}`)
         if(confirmDelete){
           delete product._id
 
@@ -66,7 +66,6 @@ const ManageProducts = () => {
           .then(data=>{
             toast.success('product is send for advertise')
             refetch()
-            console.log(data)
           })
 
         }

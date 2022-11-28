@@ -4,24 +4,25 @@ This is a Bike resale website. A fullstack react webapp with payment functionali
 
 
 ## Live Link
-Hosted in Firebase -> [Family Law Attorney](https://lawyer-be029.web.app/)
+Hosted in Firebase -> [Biker point](https://biker-point-5fd68.web.app/)
 
 ## Features
-1. It's an service review app where A person can showcase his work and get review from his client.
+1. It's a resale market website. Here people can buy sell there second hand product.
 2. To create this web app I used the most popular js library React js. 
 3. Using Firebase for authentication.
-4. Mongodb as database
+4. Mongodb as database.
 4. Node js Express js for backend ..
 5. For the security I also implement JWT(json web token).
-6. Here you can post your review, also update delete it as per your wish.
+6. By this webapp user can pay for their product by using card.
 
 ## Future implemention
 ### In future We will come with this app with lots of feature. 
 
-1. Implement international payment system by this people can buy the service through this app.
-2. Dark/Light mode switching
-3. Implement messaging system.
-4. Implement Online consultation through this app.
+
+1. Dark/Light mode switching
+2. Implement messaging system.
+3. Implement Online consultation through this app.
+4. Live tracking products.
 
 #### And much more
 
