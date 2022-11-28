@@ -56,7 +56,7 @@ const AllSellers = () => {
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
            {
-            users.length===0 && <p className='text-black text-2xl font-bold'>No <span className='text-4xl text-res-600'>seller's</span> register yet</p>
+            users?.length===0 && <p className='text-black text-2xl font-bold'>No <span className='text-4xl text-res-600'>seller's</span> register yet</p>
           }
         
             {

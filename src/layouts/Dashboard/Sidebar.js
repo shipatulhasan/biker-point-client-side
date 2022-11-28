@@ -46,7 +46,7 @@ const Sidebar = () => {
                     <Link to='/' className="w-2/3 mx-auto hover:cursor-pointer">
                        <img src={brand} alt="" />
                     </Link>
-                    <div className='flex items-center gap-0 mt-2'>
+                    <Link to='/dashboard' className='flex items-center gap-0 mt-2'>
 
                     <div className="w-11 h-11 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center flex-shrink-0">
            {
@@ -68,7 +68,7 @@ const Sidebar = () => {
               </p>
               
             </div>
-                    </div>
+                    </Link>
                     <ul className="mt-12 space-y-8">
                      {menuList}
                     </ul>

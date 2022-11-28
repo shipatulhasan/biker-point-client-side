@@ -37,10 +37,18 @@ const BookingModal = ({ show, setShow, product }) => {
     })
     .then(res=>res.json())
     .then(data=>{
-      console.log(data)
-      toast.success('successfully booked')
-      setIsloading(false)
-      setShow(false);
+      if(data.acknowledged){
+        console.log(data)
+        toast.success('successfully booked')
+        setIsloading(false)
+        setShow(false);
+      }
+      else{
+        toast.error(data.message)
+        setIsloading(false)
+        setShow(false);
+
+      }
     })
 
  

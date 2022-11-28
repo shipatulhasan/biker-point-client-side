@@ -29,7 +29,7 @@ const AllBuyers = () => {
         <div className='container mx-auto px-4 sm:px-8 py-8'>
 
           {
-            users.length===0 && <p className='text-black text-2xl font-bold'>No User's register yet</p>
+            users?.length===0 && <p className='text-black text-2xl font-bold'>No User's register yet</p>
           }
        
         

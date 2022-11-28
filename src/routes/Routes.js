@@ -4,6 +4,7 @@ import Main from "../layouts/Main";
 import CategoryPage from "../pages/CategoryPage";
 import AllBuyers from "../pages/Dashboard/AdminPanel/AllBuyers/AllBuyers";
 import AllSellers from "../pages/Dashboard/AdminPanel/AllSellers/AllSellers";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
 import AddProduct from "../pages/Dashboard/SellerPanel/AddProduct";
 import ManageProducts from "../pages/Dashboard/SellerPanel/ManageProduct/ManageProducts";
 import MyOrders from "../pages/Dashboard/UserPanel/MyOrders/MyOrders";
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         element:<PrivateRoute><Dashboard /></PrivateRoute>,
         errorElement:<ErrorPage/>,
         children:[
+            {
+                path:'/dashboard',
+                element:<DashboardHome />
+            },
             {
                 path:'/dashboard/my-orders',
                 element:<MyOrders />
