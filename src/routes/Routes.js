@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layouts/Dashboard/DashboardLayout";
 import Main from "../layouts/Main";
+import BlogPage from "../pages/Blog/BlogPage";
 import CategoryPage from "../pages/CategoryPage";
 import AllBuyers from "../pages/Dashboard/AdminPanel/AllBuyers/AllBuyers";
 import AllSellers from "../pages/Dashboard/AdminPanel/AllSellers/AllSellers";
@@ -8,6 +9,7 @@ import DashboardHome from "../pages/Dashboard/DashboardHome";
 import AddProduct from "../pages/Dashboard/SellerPanel/AddProduct";
 import ManageProducts from "../pages/Dashboard/SellerPanel/ManageProduct/ManageProducts";
 import MyOrders from "../pages/Dashboard/UserPanel/MyOrders/MyOrders";
+import Payment from "../pages/Dashboard/UserPanel/Payment/Payment";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Forms/Login";
 import Registration from "../pages/Forms/Registration";
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path:'/home',
                 element:<Home />
+            },
+            {
+                path:'/blog',
+                element:<BlogPage />
             },
             {
                 path:'/categories',
@@ -57,6 +63,11 @@ const router = createBrowserRouter([
                 path:'/dashboard/my-orders',
                 element:<MyOrders />
             },
+            {
+                path:'/dashboard/:id',
+                element:<Payment />
+            },
+         
             {
                 path:'/dashboard/add-product',
                 element:<SellerRoutes><AddProduct /></SellerRoutes>

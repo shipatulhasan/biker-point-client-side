@@ -37,6 +37,7 @@ const AllSellers = () => {
                 method:'put',
                 headers:{
                     'content-type':'application/json',
+                    authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
                 },
                 body:JSON.stringify({...seller,verified:true})
             })

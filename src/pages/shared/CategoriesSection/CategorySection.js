@@ -6,7 +6,7 @@ import CategoryCard from './CategoryCard';
 
 const CategorySection = ({slice_range}) => {
   const [categories,catLoading] = useCategories()
-  const {init,rest} = slice_range
+
 
     return (
         <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-8">
@@ -22,7 +22,7 @@ const CategorySection = ({slice_range}) => {
           catLoading ? <Loader height={'min-h-[60vh]'} /> : <div className="grid gap-5 py-2 mb-8 md:grid-cols-3">
 
           {
-            categories.slice(init,rest).map(category=><CategoryCard key={category._id} category={category} />)
+            categories.slice(0,3).map(category=><CategoryCard key={category._id} category={category} />)
           }
       
         </div>

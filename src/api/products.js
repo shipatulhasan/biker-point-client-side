@@ -2,7 +2,8 @@ export const setProductToDb = async(product)=>{
    const res = await fetch(`${process.env.REACT_APP_api}/product`,{
         method:'post',
         headers:{
-            'content-type':'application/json'
+            'content-type':'application/json',
+            authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
         },
         body:JSON.stringify(product)
    })

@@ -2,7 +2,8 @@ export const saveUser = async(user)=>{
   const res = await fetch(`${process.env.REACT_APP_api}/user/${user?.email}`,{
         method:'put',
         headers:{
-            'content-type':'application/json'
+            'content-type':'application/json',
+            authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
         },
         body:JSON.stringify(user)
     })

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { getImageUrl } from "../../api/imageUrl";
-import { useToken } from "../../hooks/useToken";
+
 import logo from "../../assets/brand/logo-png1.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 import LoaderText from '../../components/Spinner/LoderText'
@@ -21,15 +21,10 @@ const Registration = () => {
     setIsLoading,
   } = useContext(AuthContext);
   const [role, setRole] = useState("user");
-  const [createNewUser, setCreateNewUser] = useState("");
-  const [token] = useToken(createNewUser);
+
+
   // use navigate
   let navigate = useNavigate();
-
-  if (token) {
-    navigate("/");
-    return
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,10 +46,8 @@ const Registration = () => {
       .then((data) => {
         createUser(email, pass)
           .then((result) => {
-            toast.success("Successfully registerd");
             handleUpdateProfile(userName, data);
-            setError("");
-            form.reset();
+          
             
             const userData = {
                 email,
@@ -64,9 +57,18 @@ const Registration = () => {
               };
               saveUser(userData)
               .then(data=>{
-                console.log(data)
-                setCreateNewUser(email)
-                setIsLoading(false);
+                fetch(`${process.env.REACT_APP_api}/jwt?email=${email}`)
+                .then(res=>res.json())
+                .then(data=>{
+                    if(data?.token){
+                        localStorage.setItem('biker-point-token',data.token)
+                        toast.success('Successfully registered')
+                        setError('')  
+                        form.reset();
+                        navigate("/");
+                        setIsLoading(false)
+                    }
+                })
         })
             
           })
@@ -101,8 +103,16 @@ const Registration = () => {
         }
         saveUser(userData)
         .then(data=>{
-          console.log(data)
-          setCreateNewUser(user?.email)
+          fetch(`${process.env.REACT_APP_api}/jwt?email=${user?.email}`)
+          .then(res=>res.json())
+          .then(data=>{
+              if(data?.token){
+                  localStorage.setItem('biker-point-token',data.token)
+                  toast.success('Successfully registered')
+                  setError('')  
+                  navigate("/");
+              }
+          })
         })
         
       })

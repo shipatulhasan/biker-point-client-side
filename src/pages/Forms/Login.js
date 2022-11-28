@@ -7,14 +7,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
-import { useToken } from "../../hooks/useToken";
 import LoderText from "../../components/Spinner/LoderText";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [viewPass, setViewPass] = useState(false);
-  const [createUser,setCreateUser] = useState('')
-  const [token] = useToken(createUser)
   const {
     signInWithGoogle,
     signIn,
@@ -29,23 +26,23 @@ const Login = () => {
 
   let from = location.state?.from?.pathname || "/";
 
- if(token){
-  navigate(from, { replace: true });
-  setIsLoading(false)
-  return
- }
-
-
   // sign in with google
 
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        setError("");
-        setCreateUser(user?.email);
-        toast.success("Successfully Registered");
-      
+        fetch(`${process.env.REACT_APP_api}/jwt?email=${user?.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            if(data?.token){
+                localStorage.setItem('biker-point-token',data.token)
+                toast.success('Successfully logged in')
+                setError('')  
+                navigate(from, { replace: true });
+            }
+        })
+            
       })
       .catch((err) => {
         console.error(err);
@@ -63,13 +60,21 @@ const Login = () => {
 
     signIn(email, pass)
     .then(result=>{
-      const user = result.user
-      setCreateUser(user?.email);
-        toast.success('Successfully logged in')
-        setError('')  
-        form.reset() 
-        setIsLoading(false)
 
+        fetch(`${process.env.REACT_APP_api}/jwt?email=${email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            if(data?.token){
+                localStorage.setItem('biker-point-token',data.token)
+                toast.success('Successfully logged in')
+                setError('')  
+                form.reset() 
+                navigate(from, { replace: true });
+                setIsLoading(false)
+                
+            }
+        })
+          
     })
     .catch((err) => {
       console.error(err);

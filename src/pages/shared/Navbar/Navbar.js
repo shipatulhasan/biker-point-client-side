@@ -22,6 +22,17 @@ const Navbar = () => {
           </li>
         )}
       </NavLink>
+      <NavLink to="/blog">
+        {({ isActive }) => (
+          <li
+            className={`${
+              isActive ? "text-red-600" : "text-black"
+            } hover:bg-red-300 hover:text-black px-2 rounded transition-colors duration-150 ease-linear font-bold list-none`}
+          >
+            Blog
+          </li>
+        )}
+      </NavLink>
 
       {!user && (
         <NavLink to="/login">

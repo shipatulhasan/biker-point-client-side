@@ -17,9 +17,6 @@ import Loader from '../../../components/Spinner/Loader';
 
 const Advertise = ({advertises,isLoading}) => {
 
-  
- 
-
     const pagination = {
         clickable: true,
         renderBullet: function (index, className) {
@@ -41,22 +38,18 @@ const Advertise = ({advertises,isLoading}) => {
           className="mySwiper"
         >
             {
-                advertises.map(ad=>   <SwiperSlide key={ad._id} className='relative pt-10'>
+                advertises.map(ad=><SwiperSlide key={ad._id} className='relative pt-10'>
                 <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
         <div>
-        
          <img
            className="object-contain w-full h-56 rounded sm:h-96"
            src={ad?.image}
            alt=""
          />
-        
-        
         </div>
         
         {/*  */}
         <div className='space-y-5 '>
-        
         
         <div>
         
@@ -81,7 +74,7 @@ const Advertise = ({advertises,isLoading}) => {
         </h2>
         
         <p className="my-3 text-sm text-gray-900">
-         {ad?. description }
+         {ad?.description }
         </p>
         <hr className="my-5 border-gray-300" />
          <p className=" font-bold">Seller information</p>

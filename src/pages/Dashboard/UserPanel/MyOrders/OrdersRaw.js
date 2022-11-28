@@ -38,7 +38,7 @@ const OrdersRaw = ({booking,index,handleDelete}) => {
             booking?.paid  ? 
             <button disabled  className='bg-blue-200 text-blue-700 text-center font-semibold rounded-full px-5 py-1'>Paid</button>
             :
-            <Link className='text-green-900 bg-green-200 text-center font-semibold rounded-full px-5 py-1'>Pay</Link>
+            <Link to={`/dashboard/${booking?._id}`} className='text-green-900 bg-green-200 text-center font-semibold rounded-full px-5 py-1'>Pay</Link>
 
           }
           

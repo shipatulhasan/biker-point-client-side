@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const ManageProducts = () => {
     const {user} = useContext(AuthContext)
+
     const { isLoading, data:products,refetch } = useQuery({
         queryKey: ['product',user?.email],
         queryFn: async()=>{
@@ -19,6 +20,7 @@ const ManageProducts = () => {
             const data = await res.json()
             return data
         }
+        
       })
 
 
@@ -28,7 +30,10 @@ const ManageProducts = () => {
         if(confirmDelete){
 
           fetch(`${process.env.REACT_APP_api}/product/${product?._id}`,{
-            method:'delete'
+            method:'delete',
+            headers:{
+              authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
+          }
 
           })
           .then(res=>res.json())
@@ -69,13 +74,12 @@ const ManageProducts = () => {
       }
 
 
-
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
           
             <div className='px-4  py-4 overflow-x-auto'>
               {
-                products?.length===0 ? <p className='text-black text-2xl font-bold'>No product added yet. wanna add new product? <Link to='/dashboard/add-product' className='text-red-600 font-semibold '>Click here</Link></p>
+                products?.length< 1 ? <p className='text-black text-2xl font-bold'>No product added yet. wanna add new product? <Link to='/dashboard/add-product' className='text-red-600 font-semibold '>Click here</Link></p>
                  :
                 <>
                  {
