@@ -37,12 +37,18 @@
 }
 .swiper-button-next:after, .swiper-button-prev:after {
     font-family: swiper-icons;
-    font-size: 10px;
-    /* padding: 20px; */
+    font-size: 14px;
+    padding: 14px;
 }
 .swiper-button-next{
     left: auto;
     right: 40px;
     
     
+}
+
+@media (max-width: 767.5px){
+  .swiper-button-next, .swiper-button-prev {
+    display: none;
+}
 }

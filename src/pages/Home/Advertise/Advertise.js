@@ -5,7 +5,7 @@ import { MdVerified } from "react-icons/md";
 
 // Import Swiper styles
 import "swiper/css";
-// import "swiper/css/navigation";
+import "swiper/css/navigation";
 import './ad.css'
 
 // import required modules
@@ -70,7 +70,7 @@ const Advertise = ({advertises,isLoading}) => {
         </h2>
         
         <p className="my-3 text-sm text-gray-900">
-         {ad?.description }
+         {ad?.description.length > 200 ? ad?.description.slice(0,200)+'...': ad?.description}
         </p>
         <hr className="my-5 border-gray-300" />
          <p className=" font-bold">Seller information</p>

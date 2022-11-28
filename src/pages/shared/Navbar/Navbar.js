@@ -4,12 +4,21 @@ import brand from "../../../assets/brand/logo-png1.png";
 import Loader from "../../../components/Spinner/Loader";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import UserProfile from "./UserProfile";
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
-  const { user, isLoading } = useContext(AuthContext);
+  const { user, isLoading,logOut } = useContext(AuthContext);
+  const handleLogOut = ()=>{
+    logOut()
+    .then(()=>{ 
+      toast.success('Successfully logout')
+    })
+    .catch(err=>console.error(err.message))
+  }
 
   const menuList = (
+
     <>
       <NavLink to="/Home">
         {({ isActive }) => (
@@ -34,8 +43,7 @@ const Navbar = () => {
         )}
       </NavLink>
 
-      {!user && (
-        <NavLink to="/login">
+      {!user ?  <NavLink to="/login">
           {({ isActive }) => (
             <li
             className={`${
@@ -45,8 +53,32 @@ const Navbar = () => {
               Login
             </li>
           )}
-        </NavLink>
-      )}
+        </NavLink> 
+        :
+        <>
+          <NavLink to="/dashboard">
+          {({ isActive }) => (
+            <li
+            className={`${
+              isActive ? "text-red-600" : "text-black"
+            } hover:bg-red-300 hover:text-black px-2 rounded transition-colors duration-150 ease-linear font-bold list-none`}
+            >
+              Dashboard
+            </li>
+          )}
+        </NavLink> 
+          <NavLink onClick={handleLogOut} >
+          
+            <li
+            className={` text-black
+            hover:bg-red-300 hover:text-black px-2 rounded transition-colors duration-150 ease-linear font-bold list-none`}
+            >
+              Logout
+            </li>
+     
+        </NavLink> 
+        </>
+         }
     </>
   );
 

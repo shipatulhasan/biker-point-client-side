@@ -7,9 +7,9 @@ const ErrorPage = () => {
   
     return (
        
-<section className="flex items-center h-full min-h-screen p-16 dark:bg-gray-900 dark:text-gray-100 bg-center bg-no-repeat bg-cover" style={{backgroundImage:`url(${img})`}}>
-	<div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-		<div className="max-w-md text-center">
+<section className="flex items-center h-full min-h-screen p-4 dark:bg-gray-900 dark:text-gray-100 bg-center bg-no-repeat bg-cover" style={{backgroundImage:`url(${img})`}}>
+	<div className="container flex items-center justify-center w-full md:w-1/2  px-5 mx-auto py-8 bg-white bg-opacity-60 rounded-sm shadow-xl shadow-slate-200">
+		<div className="md:max-w-lg text-center">
 			<h2 className="mb-8 font-extrabold text-9xl dark:text-gray-600">
 				<span className="sr-only">Error</span>{error.status}
 			</h2>
