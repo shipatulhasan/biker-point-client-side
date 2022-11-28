@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/category/:id',
-               loader:({params})=>fetch(`${process.env.REACT_APP_api}/category/${params.id}`),
+               
                 element:<PrivateRoute><SingleProduct /></PrivateRoute>
             },
            

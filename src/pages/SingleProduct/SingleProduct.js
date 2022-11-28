@@ -2,22 +2,35 @@ import React, {  useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import ProductsCard from './ProductsCard';
 import {useCategories} from '../../hooks/useCategories'
-import { useLoaderData, useLocation, useNavigation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigation, useParams } from 'react-router-dom';
 import Loader from '../../components/Spinner/Loader';
 import CategorySidebar from './CategorySidebar';
 
 import toast from 'react-hot-toast';
 import { setReportedProduct } from '../../api/products';
+import { useQuery } from '@tanstack/react-query';
 
 
 const SingleProduct = () => {
   
   const [categories,catLoading] = useCategories()
-  
-     const products = useLoaderData()
+
+
+  const {id} = useParams()
+
+  const {data:products,refetch,isLoading} = useQuery({
+      queryKey:['category',id],
+      queryFn:()=>fetch(`${process.env.REACT_APP_api}/category/${id}`,{
+          headers:{
+              authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
+          }
+      })
+      .then(res=>res.json())
+  })
+
     const {state} = useLocation()
     const [processing,setProcessing] = useState(false)
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
 
     const handleReport=(product)=>{
@@ -27,6 +40,7 @@ const SingleProduct = () => {
         if(data.modifiedCount>0){
           toast.success('You reported this product')
           setProcessing(false)
+          refetch()
              
         }
 
@@ -36,7 +50,7 @@ const SingleProduct = () => {
 
 
 
-    if(navigation.state === "loading"||catLoading){
+    if(isLoading ||catLoading){
       return <Loader height={'min-h-[60vh]'} />
     }
     return (
