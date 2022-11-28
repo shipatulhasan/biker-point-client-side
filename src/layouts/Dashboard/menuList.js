@@ -101,7 +101,7 @@ export const adminMenu = <>
           </li>
         )}
       </NavLink>
-    <NavLink to="/dashboard/reported-product">
+    <NavLink to="/dashboard/reported-items">
         {({ isActive }) => (
           <li
             className={`${
