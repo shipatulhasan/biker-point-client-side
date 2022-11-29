@@ -26,7 +26,7 @@ const ManageProducts = () => {
 
       const handleDelete = (product)=>{
 
-        const confirmDelete = window.confirm(`would you like to delete ${product.name}`)
+        const confirmDelete = window.confirm(`would you like to delete ${product?.title}`)
         if(confirmDelete){
 
           fetch(`${process.env.REACT_APP_api}/product/${product?._id}`,{

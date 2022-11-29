@@ -7,7 +7,7 @@ const NewsLetter = () => {
     
           <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
           
-            Subscribe to out newsletter
+            Subscribe to our newsletter
           </h2>
           <p className="text-sm text-gray-700 md:text-lg">
           The best resale bike shop in town. You can get and sell your bike at an affordable price. 

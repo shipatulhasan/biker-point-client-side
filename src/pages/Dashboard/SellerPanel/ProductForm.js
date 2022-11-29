@@ -25,9 +25,9 @@ const ProductForm = () => {
   } = useForm();
   const [categories] = useCategories()
 
-  const handleAddUser = (data)=>{
+  const handleAddProduct = (data)=>{
     const date = format(new Date(),'PPpp')
-    console.log(data,date,data.img[0])
+    // console.log(data,date,data.img[0])
     setIsLoading(true)
     getImageUrl(data.img[0])
     .then(Imagedata=>{
@@ -42,6 +42,7 @@ const ProductForm = () => {
             purchase_year:data.purchase,
             description:data.description,
             post_date:date,
+            status:'available',
             seller:{
                 name:user.displayName,
                 email:user.email,
@@ -73,7 +74,7 @@ const ProductForm = () => {
       <div className="flex justify-center mt-6">
         <div className="w-full max-w-md p-8 space-y-3 text-gray-800 rounded-xl bg-gray-50">
           <form
-            onSubmit={handleSubmit(handleAddUser)}
+            onSubmit={handleSubmit(handleAddProduct)}
             className="space-y-6 "
           >
             <div className="space-y-1 text-sm">

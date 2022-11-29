@@ -53,7 +53,7 @@ export const sellersMenu = <>
           </li>
         )}
       </NavLink>
-    <NavLink to="/dashboard/my-buyers">
+    <NavLink to='/comming-soon'>
         {({ isActive }) => (
           <li
             className={`${
