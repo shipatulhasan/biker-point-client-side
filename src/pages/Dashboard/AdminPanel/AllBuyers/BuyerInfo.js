@@ -15,7 +15,7 @@ const BuyerInfo = ({buyer,index,handleDelete}) => {
               src={image}
               alt="img"
             />
-            <p className='text-gray-900 whitespace-no-wrap'>
+            <p className='text-gray-900 capitalize whitespace-no-wrap'>
                 {name}
               </p>
 

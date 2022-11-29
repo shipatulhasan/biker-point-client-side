@@ -91,7 +91,7 @@ const ProductsCard = ({ product, handleReport, isLoading }) => {
               alt="img"
             />
             <div className="ml-2 flex items-center">
-              <h1 className="text-base font-bold text-black dark:text-gray-200">
+              <h1 className="text-base capitalize font-bold text-black dark:text-gray-200">
                 {seller?.name}
               </h1>
               {seller?.verified && (

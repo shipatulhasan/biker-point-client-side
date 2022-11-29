@@ -14,7 +14,10 @@ const AllSellers = () => {
       if(confirmDelete){
 
         fetch(`${process.env.REACT_APP_api}/user/${seller?._id}`,{
-          method:'delete'
+          method:'delete',
+          headers:{
+            authorization:`Bearer ${localStorage.getItem('biker-point-token')}`
+          }
 
         })
         .then(res=>res.json())

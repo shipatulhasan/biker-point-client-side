@@ -16,7 +16,7 @@ const SellerInfo = ({seller,index,handleDelete,handleVerification}) => {
               src={image}
               alt="img"
             />
-            <p className='text-gray-900 whitespace-no-wrap flex'>
+            <p className='text-gray-900 capitalize whitespace-no-wrap flex'>
                 {name}
                 {
                     seller?.verified &&  <MdVerified className='text-blue-700 text-lg' /> 
