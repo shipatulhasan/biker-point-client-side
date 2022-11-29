@@ -107,16 +107,19 @@ const ProductsCard = ({ product, handleReport }) => {
             >
               Book now
             </button>
+            {
+              !product?.reported && 
+              <button
+                onClick={() => handleReport(product)}
+                className="text-red-700 bg-red-200 rounded px-3 py-1 hover:cursor-pointer flex items-center gap-2 font-bold"
+              >
+              
+                    <MdReportGmailerrorred className="font-bold" />
+                    Report product
+           
+              </button>
+            }
 
-            <button
-              onClick={() => handleReport(product)}
-              className="text-red-700 bg-red-200 rounded px-3 py-1 hover:cursor-pointer flex items-center gap-2 font-bold"
-            >
-            
-                  <MdReportGmailerrorred className="font-bold" />
-                  Report product
-         
-            </button>
             {show && (
               <BookingModal show={show} setShow={setShow} product={product} />
             )}
