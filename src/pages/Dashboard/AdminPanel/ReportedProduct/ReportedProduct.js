@@ -4,6 +4,7 @@ import Loader from '../../../../components/Spinner/Loader';
 import toast from 'react-hot-toast';
 import ItemRow from './ItemRow';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 
 const ReportedProduct = () => {
@@ -51,6 +52,10 @@ const ReportedProduct = () => {
 
     return (
       <div className='container mx-auto px-4 sm:px-8 py-8'>
+
+<Helmet>
+        <title>Reported Products - Biker Point</title>
+      </Helmet>
           
       <div className='px-4  py-4 overflow-x-auto'>
         {

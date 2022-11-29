@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useRouteError } from 'react-router-dom';
 import img from '../assets/banner/404-error-page-not-found.jpg'
 
@@ -8,6 +9,9 @@ const ErrorPage = () => {
     return (
        
 <section className="flex items-center h-full min-h-screen p-4 dark:bg-gray-900 dark:text-gray-100 bg-center bg-no-repeat bg-cover" style={{backgroundImage:`url(${img})`}}>
+<Helmet>
+        <title>404 - Biker Point</title>
+      </Helmet>
 	<div className="container flex items-center justify-center w-full md:w-1/2  px-5 mx-auto py-8 bg-white bg-opacity-60 rounded-sm shadow-xl shadow-slate-200">
 		<div className="md:max-w-lg text-center">
 			<h2 className="mb-8 font-extrabold text-9xl dark:text-gray-600">

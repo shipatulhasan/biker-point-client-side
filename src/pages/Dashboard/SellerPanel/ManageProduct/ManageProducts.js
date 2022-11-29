@@ -5,6 +5,7 @@ import {AuthContext} from '../../../../contexts/AuthProvider'
 import TableRow from './TableRow';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const ManageProducts = () => {
     const {user} = useContext(AuthContext)
@@ -75,6 +76,9 @@ const ManageProducts = () => {
 
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
+          <Helmet>
+        <title>Manage Product - Biker Point</title>
+      </Helmet>
           
             <div className='px-4  py-4 overflow-x-auto'>
               {

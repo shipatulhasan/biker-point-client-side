@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Loader from '../../../../components/Spinner/Loader'
 import OrdersRaw from './OrdersRaw';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 const MyOrders = () => {
 
     const {user} = useContext(AuthContext)
@@ -57,6 +58,9 @@ const MyOrders = () => {
 
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
+          <Helmet>
+        <title>My order - Biker Point</title>
+      </Helmet>
 
 {
                isLoading ? <Loader /> :

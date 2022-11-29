@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import React, {useContext,useState,useEffect} from 'react';
+import { Helmet } from 'react-helmet-async';
 import {AuthContext} from '../../contexts/AuthProvider'
 
 
@@ -19,6 +20,9 @@ const DashboardHome = () => {
 
     return (
         <div className='space-y-5 pl-5'>
+            <Helmet>
+        <title>Dashboard - Biker Point</title>
+      </Helmet>
             <div className='flex justify-between items-end border-b-4 t border-black py-2'>
                 <div>
                 <h2 className='text-red-600 text-lg md:text-2xl uppercase font-bold'>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Spinner/Loader";
 import CategorySection from "../shared/CategoriesSection/CategorySection";
@@ -30,6 +31,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Home - Biker Point</title>
+      </Helmet>
      <div className="pb-5">
      <Slider />
      </div>

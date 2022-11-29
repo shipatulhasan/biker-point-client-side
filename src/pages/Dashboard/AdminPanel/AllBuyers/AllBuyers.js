@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import Loader from '../../../../components/Spinner/Loader';
 import {useUserData} from '../../../../hooks/useUserData'
@@ -30,6 +31,9 @@ const AllBuyers = () => {
 
     return (
         <div className='container mx-auto px-4 sm:px-8 py-8'>
+          <Helmet>
+        <title>All Buyers - Biker Point</title>
+      </Helmet>
 
           {
             users?.length===0 && <p className='text-black text-2xl font-bold'>No User's register yet</p>

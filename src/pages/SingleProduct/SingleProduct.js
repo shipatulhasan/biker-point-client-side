@@ -9,6 +9,7 @@ import CategorySidebar from './CategorySidebar';
 import toast from 'react-hot-toast';
 import { setReportedProduct } from '../../api/products';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 
 const SingleProduct = () => {
@@ -56,6 +57,9 @@ const SingleProduct = () => {
     return (
 
         <div>
+          <Helmet>
+        <title>{state?.name?state?.name:'category'} - Biker Point</title>
+      </Helmet>
             <PageHeader headerInfo={ {img:state?.img,title:state?.name} } />
             <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-8 lg:py-20">
                 <div className='grid gap-10 md:gap-5 grid-cols-1 md:grid-cols-5 '>

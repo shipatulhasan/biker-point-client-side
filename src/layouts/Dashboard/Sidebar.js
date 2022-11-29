@@ -126,9 +126,9 @@ const Sidebar = () => {
                     </svg>
                 </div>
                 <div className="px-8 my-5">
-                    <div className="w-2/3 mx-auto">
+                    <Link to='/' className="w-2/3 mx-auto">
                        <img src={brand} alt="" />
-                    </div>
+                    </Link>
                     <div className='flex items-center gap-0 mt-2'>
 
                     <div className="w-12 h-12 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center">

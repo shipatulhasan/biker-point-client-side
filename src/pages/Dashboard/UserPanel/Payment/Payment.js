@@ -5,6 +5,7 @@ import Loader from '../../../../components/Spinner/Loader';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckutForm';
 import { loadStripe } from '@stripe/stripe-js';
+import { Helmet } from 'react-helmet-async';
 
 
 const stripePromise = loadStripe(process.env.REACT_APP_stripe_pk);
@@ -35,6 +36,9 @@ const Payment = () => {
     const {image,product_title,price} = booking
     return (
         <div className='flex h-full min-h-[80vh] items-center justify-center'>
+             <Helmet>
+        <title>Checkout - Biker Point</title>
+      </Helmet>
              <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
             <div>
             

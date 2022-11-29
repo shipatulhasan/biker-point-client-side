@@ -4,12 +4,16 @@ import img from '../assets/banner/motorcycle.jpg'
 import CategoryCard from './shared/CategoriesSection/CategoryCard'
 import { useCategories } from '../hooks/useCategories';
 import Loader from '../components/Spinner/Loader';
+import { Helmet } from 'react-helmet-async';
 
 
 const CategoryPage = () => {
     const [categories,catLoading] = useCategories()
     return (
         <div>
+          <Helmet>
+        <title>Categories - Biker Point</title>
+      </Helmet>
             <PageHeader headerInfo={{img,title:'Choose your own preference'}} />
          
             <div className="px-4 py-16 lg:py-20 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-8">
