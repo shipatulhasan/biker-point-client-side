@@ -5,7 +5,7 @@ import { MdReportGmailerrorred } from "react-icons/md";
 import LoaderText from "../../components/Spinner/LoderText";
 import BookingModal from "./BookingModal";
 
-const ProductsCard = ({ product, handleReport, isLoading }) => {
+const ProductsCard = ({ product, handleReport }) => {
   const {
     title,
     originalprice,
@@ -112,14 +112,10 @@ const ProductsCard = ({ product, handleReport, isLoading }) => {
               onClick={() => handleReport(product)}
               className="text-red-700 bg-red-200 rounded px-3 py-1 hover:cursor-pointer flex items-center gap-2 font-bold"
             >
-              {isLoading ? (
-                <LoaderText />
-              ) : (
-                <>
+            
                   <MdReportGmailerrorred className="font-bold" />
                   Report product
-                </>
-              )}
+         
             </button>
             {show && (
               <BookingModal show={show} setShow={setShow} product={product} />

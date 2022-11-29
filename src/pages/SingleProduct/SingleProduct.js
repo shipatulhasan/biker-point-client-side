@@ -30,17 +30,14 @@ const SingleProduct = () => {
   })
 
     const {state} = useLocation()
-    const [processing,setProcessing] = useState(false)
     // const navigation = useNavigation();
 
 
     const handleReport=(product)=>{
-      setProcessing(true)
       setReportedProduct(product)
       .then(data=>{
         if(data.modifiedCount>0){
           toast.success('You reported this product')
-          setProcessing(false)
           refetch()
              
         }
@@ -79,7 +76,7 @@ const SingleProduct = () => {
                     </h2>
                       }
                       {
-                        products.map(product=><ProductsCard key={product._id} isLoading={processing}  product={product} handleReport={handleReport} />)
+                        products.map(product=><ProductsCard key={product._id}  product={product} handleReport={handleReport} />)
                       }
                     
                     </div>
