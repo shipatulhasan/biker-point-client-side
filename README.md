@@ -2,6 +2,9 @@
 
 This is a Bike resale website. A fullstack react webapp with payment functionality. By this website people can buy and sell their secondehand or any kind of bike. I implement three panle for this website. Master admin , Seller and user.  
 
+Adimin Access: shakib@gmail.com pass:1234567890
+seller access: thomas@gmail.com pass:1234567890
+
 
 ## Live Link
 Hosted in Firebase -> [Biker point](https://biker-point-5fd68.web.app/)
