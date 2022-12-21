@@ -1,8 +1,8 @@
-import React, {  useState } from 'react';
+import React from 'react';
 import PageHeader from '../../components/PageHeader';
 import ProductsCard from './ProductsCard';
 import {useCategories} from '../../hooks/useCategories'
-import { useLoaderData, useLocation, useNavigation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Loader from '../../components/Spinner/Loader';
 import CategorySidebar from './CategorySidebar';
 

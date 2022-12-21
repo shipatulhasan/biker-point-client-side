@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import "./index.css";
 import App from "./App";
 import AuthProvider from "./contexts/AuthProvider";
+import 'react-loading-skeleton/dist/skeleton.css'
 import {
   QueryClient,
   QueryClientProvider,

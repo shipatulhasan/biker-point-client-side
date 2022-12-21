@@ -1,5 +1,4 @@
 import React from 'react';
-import {useUserData} from '../../../../hooks/useUserData'
 import Loader from '../../../../components/Spinner/Loader';
 import toast from 'react-hot-toast';
 import ItemRow from './ItemRow';

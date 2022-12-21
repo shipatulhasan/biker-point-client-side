@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import Loader from "../../components/Spinner/Loader";
 import CategorySection from "../shared/CategoriesSection/CategorySection";
 import Advertise from "./Advertise/Advertise";
+import LoadingProduct from "./LoadingProduct";
 import NewsLetter from "./NewLetter/NewsLetter";
 import Slider from "./Slider/Slider";
 
@@ -38,7 +38,7 @@ const Home = () => {
      <Slider />
      </div>
       <div className="py-16 lg:py-20">
-        <CategorySection slice_range={{ init: 0, rest: 3 }} />
+        <CategorySection />
         <div className="text-center">
           <Link
             to="/categories"
@@ -48,7 +48,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      {isLoading ? <Loader height={'min-h-[60vh]'} /> :
+      {isLoading ? <LoadingProduct /> :
           advertises?.length>0 && <div className="pb-16 lg:pb-10">
           <Advertise advertises={advertises} isLoading={isLoading}/>
         </div>

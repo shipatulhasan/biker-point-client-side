@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import { MdVerified } from "react-icons/md";
 import { MdReportGmailerrorred } from "react-icons/md";
-import LoaderText from "../../components/Spinner/LoderText";
 import BookingModal from "./BookingModal";
 
 const ProductsCard = ({ product, handleReport }) => {

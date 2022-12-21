@@ -5,9 +5,9 @@ import { adminMenu, sellersMenu, userMenu } from './menuList';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import {useRole} from '../../hooks/useRole';
-import Loader from '../../components/Spinner/Loader';
 import { Link } from 'react-router-dom';
 import { MdVerified } from "react-icons/md";
+import SidebarSkeleton from './SidebarSkeleton';
 
 const Sidebar = () => {
     const [show, setShow] = useState(false);
@@ -15,7 +15,7 @@ const Sidebar = () => {
     const {role, roleLoading,verification} = useRole(user?.email)
 
     if(isLoading || roleLoading){
-        return <Loader height={'min-h-[60vh]'} />
+        return <SidebarSkeleton />
     }
 
     let menuList

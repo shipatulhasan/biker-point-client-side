@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { useCategories } from '../../../hooks/useCategories';
-import Loader from '../../../components/Spinner/Loader'
 import CategoryCard from './CategoryCard';
+import CatSkeleton from './CatSkeleton';
 
-const CategorySection = ({slice_range}) => {
+const CategorySection = () => {
   const [categories,catLoading] = useCategories()
 
 
@@ -18,15 +18,15 @@ const CategorySection = ({slice_range}) => {
             You can choose your favourite bike from here. Click on category to check that your favorite one is available or not. Don't waste your time.
           </p>
         </div>
+        <div className="grid gap-5 py-2 mb-8 md:grid-cols-3">
         {
-          catLoading ? <Loader height={'min-h-[60vh]'} /> : <div className="grid gap-5 py-2 mb-8 md:grid-cols-3">
-
+          catLoading ? <CatSkeleton cat={3} /> : <>
           {
             categories.slice(0,3).map(category=><CategoryCard key={category._id} category={category} />)
           }
-      
-        </div>
+          </>
         }
+        </div>
         
        
       </div>

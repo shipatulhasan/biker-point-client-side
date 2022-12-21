@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { MdVerified } from "react-icons/md";
@@ -10,18 +10,9 @@ import './ad.css'
 
 // import required modules
 import { Navigation } from "swiper";
-import Loader from '../../../components/Spinner/Loader';
 
+const Advertise = ({advertises}) => {
 
-
-
-const Advertise = ({advertises,isLoading}) => {
-
-  
-
-      if(isLoading){
-        return <Loader height={'min-h-[60vh]'} />
-      }
     return (
         <div className='px-10'>
         <h2 className="text-center py-6 font-sans text-3xl font-bold leading-none tracking-tight text-black md:text-5xl">
