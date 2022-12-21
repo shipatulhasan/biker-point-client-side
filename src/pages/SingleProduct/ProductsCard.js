@@ -18,6 +18,7 @@ const ProductsCard = ({ product, handleReport }) => {
   } = product;
 
   const [show, setShow] = useState(false);
+  const [imgLoading,setImgLoading] = useState(false)
 
   const post_time = formatDistanceToNowStrict(new Date(post_date), {
     addSuffix: true,
@@ -28,8 +29,9 @@ const ProductsCard = ({ product, handleReport }) => {
     <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
       <div>
         <img
-          className="object-contain w-full h-56 rounded sm:h-96"
+          className={`${!imgLoading?'blur-md':'blur-none'}object-contain w-full h-56 rounded sm:h-96`}
           src={product?.image}
+          onLoad={()=>setImgLoading(true)}
           alt=""
         />
       </div>

@@ -3,18 +3,19 @@ import PageHeader from '../../components/PageHeader';
 import ProductsCard from './ProductsCard';
 import {useCategories} from '../../hooks/useCategories'
 import { useLocation, useParams } from 'react-router-dom';
-import Loader from '../../components/Spinner/Loader';
 import CategorySidebar from './CategorySidebar';
 
 import toast from 'react-hot-toast';
 import { setReportedProduct } from '../../api/products';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
+import SingleProductLoading from './SingleProductLoading';
 
 
 const SingleProduct = () => {
   
   const [categories,catLoading] = useCategories()
+ 
 
 
   const {id} = useParams()
@@ -49,7 +50,7 @@ const SingleProduct = () => {
 
 
     if(isLoading ||catLoading){
-      return <Loader height={'min-h-[60vh]'} />
+      return <SingleProductLoading />
     }
     return (
 

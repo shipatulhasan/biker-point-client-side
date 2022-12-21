@@ -8,7 +8,7 @@ const SidebarSkeleton = () => {
         <div className="w-2/3 my-5 h-10 mx-auto hover:cursor-pointer">
           <Skeleton height={80} />
         </div>
-        <div className="flex items-center mt-10">
+        <div className="flex items-center gap-4 mt-10">
           <div className="mt-5">
           <Skeleton width={50} height={50} circle />
           </div>
